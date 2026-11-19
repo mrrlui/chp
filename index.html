@@ -1,0 +1,2532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.1 Mathematics: CHP Class Suspension &amp; Percentages (Animated Solutions)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for crisp academic & medical icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti for completion reward -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        chp: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .step-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .desk-icon {
+            transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .desk-pulse {
+            transform: scale(1.16);
+            box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.45);
+            z-index: 10;
+        }
+        .desk-wave {
+            transform: scale(1.12);
+            background-color: #dbeafe !important;
+            border-color: #3b82f6 !important;
+            color: #1d4ed8 !important;
+        }
+        .col-highlight {
+            background-color: rgba(20, 184, 166, 0.14);
+            border-radius: 0.65rem;
+            box-shadow: inset 0 0 0 2px #0d9488;
+        }
+        .glow-ring-teal {
+            box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.3);
+        }
+        .glow-ring-indigo {
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.3);
+        }
+        .glow-ring-rose {
+            box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.35);
+        }
+        @keyframes stripeMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 28px 0; }
+        }
+        .animated-stripes {
+            background-image: repeating-linear-gradient(
+                -45deg,
+                #f43f5e,
+                #f43f5e 7px,
+                #e11d48 7px,
+                #e11d48 14px
+            );
+            background-size: 28px 28px;
+            animation: stripeMove 1s linear infinite;
+        }
+        @keyframes popBadge {
+            0% { transform: scale(0.5); opacity: 0; }
+            75% { transform: scale(1.12); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .pop-in {
+            animation: popBadge 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        @keyframes thresholdPulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.14); }
+        }
+        .threshold-alert {
+            animation: thresholdPulse 0.8s ease-in-out infinite;
+        }
+        /* Hide number input arrows for cleaner UI */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-chp-100 selection:text-chp-900">
+
+    <!-- Top Navigation & Class Header Bar -->
+    <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-slate-200 shadow-xs">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+                <!-- Title & CHP Badge -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-chp-700 text-white flex items-center justify-center shadow-sm shrink-0">
+                        <i class="fa-solid fa-shield-virus text-lg"></i>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-chp-50 text-chp-700 border border-chp-200">
+                                S.1 Mathematics • Percentages
+                            </span>
+                            <span class="text-xs text-slate-400 font-mono hidden sm:inline">Ref: CHP Guidelines (1516s1m_percent)</span>
+                        </div>
+                        <h1 class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight">
+                            Guidelines to Schools on Class Suspension
+                        </h1>
+                    </div>
+                </div>
+
+                <!-- Student Metadata & Progress Pill -->
+                <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
+                    <div class="flex items-center gap-1.5 bg-slate-100 px-2.5 py-1.5 rounded-lg border border-slate-200/80">
+                        <span class="font-semibold text-slate-500">Class:</span>
+                        <input type="text" value="S.1A" aria-label="Class" class="w-12 bg-transparent font-bold text-slate-800 focus:outline-none focus:underline">
+                    </div>
+                    <div class="flex items-center gap-1.5 bg-slate-100 px-2.5 py-1.5 rounded-lg border border-slate-200/80">
+                        <span class="font-semibold text-slate-500">Name:</span>
+                        <input type="text" placeholder="Enter student name..." aria-label="Student Name" class="w-28 sm:w-36 bg-transparent font-medium text-slate-800 placeholder:text-slate-400 focus:outline-none">
+                    </div>
+                    <!-- Progress Counter Pill -->
+                    <div class="ml-auto lg:ml-2 flex items-center gap-2 bg-slate-900 text-white px-3 py-1.5 rounded-xl shadow-sm">
+                        <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                        <span class="text-xs font-semibold tracking-wide">Solved: <span id="progressCount" class="font-mono text-chp-100 font-bold">0</span>/8</span>
+                    </div>
+                    <button onclick="resetAllProgress()" title="Reset all answers" class="text-xs font-semibold px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-600 border border-slate-200 transition cursor-pointer">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mode Navigation Tabs -->
+            <div class="flex items-center gap-2 mt-3 pt-2.5 border-t border-slate-100 overflow-x-auto">
+                <button id="tabWorksheet" onclick="switchTab('worksheet')" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-chp-600 text-white shadow-sm transition shrink-0 cursor-pointer">
+                    <i class="fa-solid fa-clipboard-question"></i>
+                    <span>Part 1: Worksheet (Q1–Q4)</span>
+                    <span id="p1CounterBadge" class="text-[11px] font-mono px-1.5 py-0.5 rounded bg-white/20 text-white">0/4</span>
+                </button>
+                <button id="tabChallenge" onclick="switchTab('challenge')" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition shrink-0 cursor-pointer">
+                    <i class="fa-solid fa-trophy text-indigo-500"></i>
+                    <span>Part 2: Challenge Mode (Q5–Q8)</span>
+                    <span id="p2CounterBadge" class="text-[11px] font-mono px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-800 font-bold">0/4</span>
+                </button>
+                <button id="tabSimulator" onclick="switchTab('simulator')" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition shrink-0 cursor-pointer">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Outbreak Simulator &amp; Extra Practice</span>
+                    <span id="simBadge" class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800">Interactive Lab</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
+
+        <!-- COLLAPSIBLE CHP REFERENCE DOCUMENT CARD (Page 1 of PDF) -->
+        <section class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+            <button onclick="toggleMemo()" class="w-full px-5 py-4 flex items-center justify-between text-left bg-gradient-to-r from-chp-50/80 via-white to-slate-50 hover:from-chp-50 transition cursor-pointer">
+                <div class="flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-chp-100 text-chp-800 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-file-medical"></i>
+                    </span>
+                    <div>
+                        <h2 class="text-sm sm:text-base font-bold text-slate-900">
+                            Official Reference: CHP Guidelines on Class Suspension
+                        </h2>
+                        <p class="text-xs text-slate-500">
+                            Centre for Health Protection (CHP) • Expert Group Report Indicators (April 2008)
+                        </p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-semibold text-chp-700">
+                    <span id="memoToggleLabel" class="hidden sm:inline">Hide Document</span>
+                    <i id="memoChevron" class="fa-solid fa-chevron-up transition-transform duration-200"></i>
+                </div>
+            </button>
+
+            <div id="memoContent" class="px-5 pb-5 pt-2 border-t border-slate-100 space-y-4">
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    <strong>CHP</strong> may consider advising affected schools/centres to suspend classes for a period of time, based on factors such as the number of children affected, severe illness and hospitalisations, outbreak progression, and responsiveness to control measures. For influenza outbreaks, reference is taken from (but not solely dictated by) the four indicators below:
+                </p>
+
+                <!-- 4 Key CHP Threshold Indicators Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <div class="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200/80 flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500 text-white flex items-center justify-center shrink-0 font-bold text-sm">
+                            %
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-amber-800">Indicator 1</div>
+                            <div class="text-sm font-extrabold text-slate-900 mt-0.5">Sick Leave Rate &ge; 10%</div>
+                            <p class="text-xs text-slate-600 mt-0.5">10% or more of total school population</p>
+                        </div>
+                    </div>
+
+                    <div class="p-3.5 rounded-xl bg-rose-50/70 border border-rose-200/80 flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-rose-500 text-white flex items-center justify-center shrink-0 text-sm">
+                            <i class="fa-solid fa-hospital"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-rose-800">Indicator 2</div>
+                            <div class="text-sm font-extrabold text-slate-900 mt-0.5">Hospitalisation &gt; 1%</div>
+                            <p class="text-xs text-slate-600 mt-0.5">More than 1% hospitalisation rate</p>
+                        </div>
+                    </div>
+
+                    <div class="p-3.5 rounded-xl bg-purple-50/70 border border-purple-200/80 flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-purple-600 text-white flex items-center justify-center shrink-0 text-sm">
+                            <i class="fa-solid fa-bed-pulse"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-purple-800">Indicator 3</div>
+                            <div class="text-sm font-extrabold text-slate-900 mt-0.5">&ge; 2 ICU Admissions</div>
+                            <p class="text-xs text-slate-600 mt-0.5">Two or more intensive care admissions</p>
+                        </div>
+                    </div>
+
+                    <div class="p-3.5 rounded-xl bg-slate-100 border border-slate-300/80 flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-slate-800 text-white flex items-center justify-center shrink-0 text-sm">
+                            <i class="fa-solid fa-heart-crack"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-slate-700">Indicator 4</div>
+                            <div class="text-sm font-extrabold text-slate-900 mt-0.5">Any Influenza Death</div>
+                            <p class="text-xs text-slate-600 mt-0.5">In otherwise healthy children</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- VIEW 1: PART 1 GUIDED INTERACTIVE WORKSHEET (QUESTIONS 1 TO 4)        -->
+        <!-- ===================================================================== -->
+        <div id="worksheetView" class="space-y-6">
+
+            <!-- QUESTION 1 CARD -->
+            <article id="card-q1" class="step-card bg-white rounded-2xl border-2 border-slate-200 p-5 sm:p-6 shadow-sm">
+                <div class="flex flex-wrap items-start justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span id="badge-q1" class="w-8 h-8 rounded-xl bg-slate-900 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">1</span>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-chp-700">Part 1 • Class Sick Leave Percentage</span>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900">Finding the Percentage of Students on Sick Leave in Class 1E</h3>
+                        </div>
+                    </div>
+                    <span id="status-q1" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-500">Unsolved</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <!-- Left: Question Prompt & Input -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <p class="text-slate-700 text-sm sm:text-base leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200/70">
+                            In <strong>class 1E</strong> with <span class="font-mono font-bold text-slate-900 bg-white px-1.5 py-0.5 rounded border">40</span> students, if <span class="font-mono font-bold text-rose-600 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200">8</span> of them take sick leave today, what is the <strong>percentage of students on sick leave</strong> in this class?
+                        </p>
+
+                        <!-- Input Controls -->
+                        <div class="flex flex-wrap items-center gap-2.5">
+                            <label for="input-q1" class="text-sm font-semibold text-slate-700">Your Answer:</label>
+                            <div class="relative flex items-center">
+                                <input type="number" id="input-q1" step="any" placeholder="e.g. 20" onkeydown="if(event.key==='Enter') checkQ1()"
+                                    class="w-32 pl-4 pr-8 py-2.5 rounded-xl border-2 border-slate-300 font-mono font-bold text-slate-900 focus:border-chp-600 focus:outline-none transition">
+                                <span class="absolute right-3 font-mono font-bold text-slate-400">%</span>
+                            </div>
+                            <button onclick="checkQ1()" class="px-4 py-2.5 rounded-xl bg-chp-600 hover:bg-chp-700 active:scale-95 text-white font-semibold text-sm shadow-sm transition cursor-pointer">
+                                Check Answer
+                            </button>
+                            <button onclick="toggleHint('hint-q1')" class="px-3 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 font-semibold text-xs sm:text-sm transition cursor-pointer">
+                                <i class="fa-regular fa-lightbulb mr-1"></i> Hint
+                            </button>
+                            <button onclick="startAnim('q1')" class="px-3.5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-semibold text-xs sm:text-sm shadow-sm transition cursor-pointer flex items-center gap-1.5">
+                                <i class="fa-solid fa-play text-xs"></i> Animate Solution
+                            </button>
+                        </div>
+
+                        <!-- Synchronized Animation Player Banner (Q1) -->
+                        <div id="anim-player-q1" class="hidden rounded-2xl bg-slate-900 text-white p-4 border border-slate-700 shadow-md space-y-3"></div>
+
+                        <!-- Hint Box -->
+                        <div id="hint-q1" class="hidden p-3.5 rounded-xl bg-amber-50/80 border border-amber-200 text-xs sm:text-sm text-amber-950 space-y-1">
+                            <p class="font-bold"><i class="fa-solid fa-compass mr-1 text-amber-600"></i> Step-by-Step Formula:</p>
+                            <p class="font-mono bg-white/80 p-2 rounded border border-amber-200/80 text-xs">
+                                Percentage on sick leave = (Students on sick leave &divide; Total students in class) &times; 100%
+                            </p>
+                            <p class="text-xs text-amber-800 pt-1">Substitute <strong>8</strong> and <strong>40</strong> into the formula: <span class="font-mono font-semibold">(8 &divide; 40) &times; 100%</span></p>
+                        </div>
+
+                        <!-- Feedback Banner -->
+                        <div id="feedback-q1" class="hidden p-4 rounded-xl text-sm"></div>
+                    </div>
+
+                    <!-- Right: Interactive 40-Desk Classroom Visualizer -->
+                    <div class="lg:col-span-5 bg-slate-50 p-4 rounded-2xl border border-slate-200/90 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                                <i class="fa-solid fa-users-viewfinder mr-1 text-chp-600"></i> Class 1E (40 Students)
+                            </span>
+                            <button onclick="toggleDeskGrouping()" id="groupDeskBtn" class="text-xs font-semibold text-chp-700 hover:text-chp-900 underline cursor-pointer">
+                                Group into 5 columns of 8
+                            </button>
+                        </div>
+
+                        <!-- 8x5 Desk Grid with Column Wrappers for Animated Grouping -->
+                        <div id="deskGrid" class="grid grid-cols-5 gap-2 p-2.5 bg-white rounded-xl border border-slate-200">
+                            <!-- Populated by JS (5 columns × 8 desks) -->
+                        </div>
+
+                        <!-- Animated Fraction-to-Percent Progress Bar -->
+                        <div class="bg-white p-2.5 rounded-xl border border-slate-200 space-y-1.5">
+                            <div class="flex justify-between text-[11px] font-mono font-bold text-slate-600">
+                                <span>Class Sick Leave Share</span>
+                                <span id="q1BarLabel" class="text-rose-600">8 / 40</span>
+                            </div>
+                            <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+                                <div id="q1PctBar" class="h-full bg-rose-500 rounded-full transition-all duration-700" style="width: 20%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between text-xs text-slate-500 pt-0.5">
+                            <span class="flex items-center gap-1.5">
+                                <span class="w-3 h-3 rounded-xs bg-rose-500 inline-block"></span> Sick Leave (8)
+                            </span>
+                            <span class="flex items-center gap-1.5">
+                                <span class="w-3 h-3 rounded-xs bg-slate-200 inline-block"></span> Present (32)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 2 CARD -->
+            <article id="card-q2" class="step-card bg-white rounded-2xl border-2 border-slate-200 p-5 sm:p-6 shadow-sm">
+                <div class="flex flex-wrap items-start justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span id="badge-q2" class="w-8 h-8 rounded-xl bg-slate-900 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">2</span>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-chp-700">Part 2 • Reverse Percentage (Whole School Sick Leave)</span>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900">Finding Total Students on Sick Leave in the Whole School</h3>
+                        </div>
+                    </div>
+                    <span id="status-q2" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-500">Unsolved</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <div class="lg:col-span-7 space-y-4">
+                        <p class="text-slate-700 text-sm sm:text-base leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200/70">
+                            The <span class="font-mono font-bold text-rose-600 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200">8</span> students on sick leave from class 1E account for <span class="font-mono font-bold text-chp-700 bg-chp-50 px-1.5 py-0.5 rounded border border-chp-200">25%</span> of the number of students on sick leave in the school. Find the <strong>total number of students on sick leave in the school</strong>.
+                        </p>
+
+                        <div class="flex flex-wrap items-center gap-2.5">
+                            <label for="input-q2" class="text-sm font-semibold text-slate-700">Your Answer:</label>
+                            <div class="relative flex items-center">
+                                <input type="number" id="input-q2" step="1" placeholder="e.g. 32" onkeydown="if(event.key==='Enter') checkQ2()"
+                                    class="w-36 pl-4 pr-16 py-2.5 rounded-xl border-2 border-slate-300 font-mono font-bold text-slate-900 focus:border-chp-600 focus:outline-none transition">
+                                <span class="absolute right-3 text-xs font-semibold text-slate-400">students</span>
+                            </div>
+                            <button onclick="checkQ2()" class="px-4 py-2.5 rounded-xl bg-chp-600 hover:bg-chp-700 active:scale-95 text-white font-semibold text-sm shadow-sm transition cursor-pointer">
+                                Check Answer
+                            </button>
+                            <button onclick="toggleHint('hint-q2')" class="px-3 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 font-semibold text-xs sm:text-sm transition cursor-pointer">
+                                <i class="fa-regular fa-lightbulb mr-1"></i> Hint
+                            </button>
+                            <button onclick="startAnim('q2')" class="px-3.5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-semibold text-xs sm:text-sm shadow-sm transition cursor-pointer flex items-center gap-1.5">
+                                <i class="fa-solid fa-play text-xs"></i> Animate Solution
+                            </button>
+                        </div>
+
+                        <!-- Synchronized Animation Player Banner (Q2) -->
+                        <div id="anim-player-q2" class="hidden rounded-2xl bg-slate-900 text-white p-4 border border-slate-700 shadow-md space-y-3"></div>
+
+                        <div id="hint-q2" class="hidden p-3.5 rounded-xl bg-amber-50/80 border border-amber-200 text-xs sm:text-sm text-amber-950 space-y-1">
+                            <p class="font-bold"><i class="fa-solid fa-compass mr-1 text-amber-600"></i> Thinking in Quarters (25% = 1/4):</p>
+                            <p>Let <span class="font-mono font-bold">N</span> be the total number of students on sick leave in the school.</p>
+                            <p class="font-mono bg-white/80 p-2 rounded border border-amber-200/80 text-xs">
+                                N &times; 25% = 8 &nbsp;&rArr;&nbsp; N = 8 &divide; 25% = 8 &divide; 0.25 = 8 &times; 4
+                            </p>
+                        </div>
+
+                        <div id="feedback-q2" class="hidden p-4 rounded-xl text-sm"></div>
+                    </div>
+
+                    <!-- Right: Visual 4-Quarter Bar Model -->
+                    <div class="lg:col-span-5 bg-slate-50 p-4 rounded-2xl border border-slate-200/90 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Bar Model (100% = 4 Quarters)</span>
+                            <span class="text-xs font-mono font-semibold text-rose-600">25% = 8</span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-2 pt-1">
+                            <div id="q2-block-0" class="bg-rose-500 text-white rounded-xl p-3 text-center shadow-xs transition-all duration-300">
+                                <div class="text-[10px] uppercase font-bold opacity-90">Class 1E</div>
+                                <div class="font-mono font-extrabold text-base mt-0.5">8</div>
+                                <div class="text-[10px] font-mono opacity-90">25%</div>
+                            </div>
+                            <div id="q2-block-1" class="bg-rose-100 border-2 border-dashed border-rose-300 text-rose-800 rounded-xl p-3 text-center transition-all duration-300">
+                                <div class="text-[10px] uppercase font-bold opacity-75">Other</div>
+                                <div id="q2-block-val-1" class="font-mono font-extrabold text-base mt-0.5">?</div>
+                                <div class="text-[10px] font-mono opacity-75">25%</div>
+                            </div>
+                            <div id="q2-block-2" class="bg-rose-100 border-2 border-dashed border-rose-300 text-rose-800 rounded-xl p-3 text-center transition-all duration-300">
+                                <div class="text-[10px] uppercase font-bold opacity-75">Other</div>
+                                <div id="q2-block-val-2" class="font-mono font-extrabold text-base mt-0.5">?</div>
+                                <div class="text-[10px] font-mono opacity-75">25%</div>
+                            </div>
+                            <div id="q2-block-3" class="bg-rose-100 border-2 border-dashed border-rose-300 text-rose-800 rounded-xl p-3 text-center transition-all duration-300">
+                                <div class="text-[10px] uppercase font-bold opacity-75">Other</div>
+                                <div id="q2-block-val-3" class="font-mono font-extrabold text-base mt-0.5">?</div>
+                                <div class="text-[10px] font-mono opacity-75">25%</div>
+                            </div>
+                        </div>
+                        <!-- Total Bracket Under Bar -->
+                        <div id="q2Bracket" class="border-t-2 border-slate-300 pt-1.5 text-center text-xs font-mono text-slate-600 transition-all duration-300">
+                            Total School Sick Leave (100%): <strong id="q2TotalReadout" class="text-slate-900">?</strong>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 3 CARD -->
+            <article id="card-q3" class="step-card bg-white rounded-2xl border-2 border-slate-200 p-5 sm:p-6 shadow-sm">
+                <div class="flex flex-wrap items-start justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span id="badge-q3" class="w-8 h-8 rounded-xl bg-slate-900 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">3</span>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-chp-700">Part 3 • Whole School Population</span>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900">Finding the Total Number of Students in the Whole School</h3>
+                        </div>
+                    </div>
+                    <span id="status-q3" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-500">Unsolved</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <div class="lg:col-span-7 space-y-4">
+                        <p class="text-slate-700 text-sm sm:text-base leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200/70">
+                            If there are <span class="font-mono font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded border border-indigo-200">120</span> students in <strong>Form 1</strong>, which constitutes <span class="font-mono font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded border border-indigo-200">15%</span> of the student population in the school, find the <strong>total number of students in the whole school</strong>.
+                        </p>
+
+                        <div class="flex flex-wrap items-center gap-2.5">
+                            <label for="input-q3" class="text-sm font-semibold text-slate-700">Your Answer:</label>
+                            <div class="relative flex items-center">
+                                <input type="number" id="input-q3" step="1" placeholder="e.g. 800" onkeydown="if(event.key==='Enter') checkQ3()"
+                                    class="w-36 pl-4 pr-16 py-2.5 rounded-xl border-2 border-slate-300 font-mono font-bold text-slate-900 focus:border-chp-600 focus:outline-none transition">
+                                <span class="absolute right-3 text-xs font-semibold text-slate-400">students</span>
+                            </div>
+                            <button onclick="checkQ3()" class="px-4 py-2.5 rounded-xl bg-chp-600 hover:bg-chp-700 active:scale-95 text-white font-semibold text-sm shadow-sm transition cursor-pointer">
+                                Check Answer
+                            </button>
+                            <button onclick="toggleHint('hint-q3')" class="px-3 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 font-semibold text-xs sm:text-sm transition cursor-pointer">
+                                <i class="fa-regular fa-lightbulb mr-1"></i> Hint
+                            </button>
+                            <button onclick="startAnim('q3')" class="px-3.5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-semibold text-xs sm:text-sm shadow-sm transition cursor-pointer flex items-center gap-1.5">
+                                <i class="fa-solid fa-play text-xs"></i> Animate Solution
+                            </button>
+                        </div>
+
+                        <!-- Synchronized Animation Player Banner (Q3) -->
+                        <div id="anim-player-q3" class="hidden rounded-2xl bg-slate-900 text-white p-4 border border-slate-700 shadow-md space-y-3"></div>
+
+                        <div id="hint-q3" class="hidden p-3.5 rounded-xl bg-amber-50/80 border border-amber-200 text-xs sm:text-sm text-amber-950 space-y-1">
+                            <p class="font-bold"><i class="fa-solid fa-compass mr-1 text-amber-600"></i> Unitary Method / Equation:</p>
+                            <p>If <strong>15%</strong> of the school = <strong>120</strong> students, then <strong>1%</strong> = <span class="font-mono">120 &divide; 15 = 8</span> students.</p>
+                            <p class="font-mono bg-white/80 p-2 rounded border border-amber-200/80 text-xs">
+                                Total Students (100%) = 120 &divide; 15% = 120 &divide; 0.15
+                            </p>
+                        </div>
+
+                        <div id="feedback-q3" class="hidden p-4 rounded-xl text-sm"></div>
+                    </div>
+
+                    <!-- Right: Proportional School Bar -->
+                    <div class="lg:col-span-5 bg-slate-50 p-4 rounded-2xl border border-slate-200/90 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">School Population Scale</span>
+                            <span id="q3UnitBadge" class="text-xs font-mono font-semibold text-indigo-700">15% = 120</span>
+                        </div>
+                        <div class="w-full h-12 bg-slate-200 rounded-xl overflow-hidden flex border border-slate-300 p-0.5 relative">
+                            <div id="q3Form1Bar" class="bg-indigo-600 text-white font-mono text-xs font-bold flex items-center justify-center rounded-lg shadow-xs transition-all duration-500" style="width: 15%; min-width: 52px;">
+                                15%
+                            </div>
+                            <div id="q3ExpandBar" class="bg-indigo-400/20 flex-1 flex items-center justify-center text-xs font-semibold text-slate-600 transition-all duration-700">
+                                Forms 2 – 6 (85%)
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-xs font-mono text-slate-600 px-1">
+                            <span>Form 1: <strong class="text-indigo-700">120</strong></span>
+                            <span>Whole School (100%): <strong id="q3TotalLabel" class="text-slate-900">?</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 4 CARD -->
+            <article id="card-q4" class="step-card bg-white rounded-2xl border-2 border-slate-200 p-5 sm:p-6 shadow-sm">
+                <div class="flex flex-wrap items-start justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span id="badge-q4" class="w-8 h-8 rounded-xl bg-slate-900 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">4</span>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-chp-700">Part 4 • Policy Decision &amp; School Sick Leave Rate</span>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900">Whole School Sick Leave Rate &amp; CHP Closure Recommendation</h3>
+                        </div>
+                    </div>
+                    <span id="status-q4" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-500">Unsolved</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <div class="lg:col-span-7 space-y-4">
+                        <p class="text-slate-700 text-sm sm:text-base leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200/70">
+                            Using your results from Questions 2 &amp; 3 (<span id="q4CarryOverText" class="font-mono font-semibold text-slate-800">School Sick Leave &divide; Whole School Population</span>), find the <strong>sick leave rate of the whole school</strong>. Should the school be closed in accordance with the guideline from CHP?
+                        </p>
+
+                        <!-- Step 4A: Rate Input -->
+                        <div class="space-y-1.5">
+                            <label for="input-q4" class="block text-sm font-bold text-slate-800">
+                                Step A: Sick leave rate of the whole school (%)
+                            </label>
+                            <div class="flex flex-wrap items-center gap-3">
+                                <div class="relative flex items-center">
+                                    <input type="number" id="input-q4" step="any" placeholder="e.g. 4" oninput="updateGaugePreview()"
+                                        class="w-36 pl-4 pr-8 py-2.5 rounded-xl border-2 border-slate-300 font-mono font-bold text-slate-900 focus:border-chp-600 focus:outline-none transition">
+                                    <span class="absolute right-3 font-mono font-bold text-slate-400">%</span>
+                                </div>
+                                <span class="text-xs text-slate-500 font-mono">
+                                    = (Sick Students &divide; Total Students) &times; 100%
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Step 4B: Policy Decision Radio Cards -->
+                        <div class="space-y-2 pt-1">
+                            <span class="block text-sm font-bold text-slate-800">
+                                Step B: Should the school be closed according to the CHP guideline?
+                            </span>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <button type="button" id="btnCloseYes" onclick="selectQ4Decision('yes')"
+                                    class="p-3.5 rounded-xl border-2 border-slate-200 bg-white hover:border-rose-300 text-left transition flex items-center gap-3 cursor-pointer">
+                                    <span class="w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center shrink-0" id="radioYes"></span>
+                                    <div>
+                                        <div class="text-sm font-bold text-slate-800">Yes, close the school</div>
+                                        <div class="text-xs text-slate-500">Rate is 10% or more</div>
+                                    </div>
+                                </button>
+
+                                <button type="button" id="btnCloseNo" onclick="selectQ4Decision('no')"
+                                    class="p-3.5 rounded-xl border-2 border-slate-200 bg-white hover:border-emerald-300 text-left transition flex items-center gap-3 cursor-pointer">
+                                    <span class="w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center shrink-0" id="radioNo"></span>
+                                    <div>
+                                        <div class="text-sm font-bold text-slate-800">No, do not close</div>
+                                        <div class="text-xs text-slate-500">Rate is less than 10%</div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-2.5 pt-2">
+                            <button onclick="checkQ4()" class="px-4 py-2.5 rounded-xl bg-chp-600 hover:bg-chp-700 active:scale-95 text-white font-semibold text-sm shadow-sm transition cursor-pointer">
+                                Check Final Answer
+                            </button>
+                            <button onclick="toggleHint('hint-q4')" class="px-3 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 font-semibold text-xs sm:text-sm transition cursor-pointer">
+                                <i class="fa-regular fa-lightbulb mr-1"></i> Hint
+                            </button>
+                            <button onclick="startAnim('q4')" class="px-3.5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-semibold text-xs sm:text-sm shadow-sm transition cursor-pointer flex items-center gap-1.5">
+                                <i class="fa-solid fa-play text-xs"></i> Animate Solution
+                            </button>
+                        </div>
+
+                        <!-- Synchronized Animation Player Banner (Q4) -->
+                        <div id="anim-player-q4" class="hidden rounded-2xl bg-slate-900 text-white p-4 border border-slate-700 shadow-md space-y-3"></div>
+
+                        <div id="hint-q4" class="hidden p-3.5 rounded-xl bg-amber-50/80 border border-amber-200 text-xs sm:text-sm text-amber-950 space-y-1">
+                            <p class="font-bold"><i class="fa-solid fa-compass mr-1 text-amber-600"></i> Calculation &amp; CHP Comparison:</p>
+                            <p class="font-mono bg-white/80 p-2 rounded border border-amber-200/80 text-xs">
+                                School Sick Leave Rate = (32 &divide; 800) &times; 100%
+                            </p>
+                            <p class="text-xs pt-1">Compare your percentage with the CHP threshold of <strong>10%</strong> (Indicator 1 in the reference memo).</p>
+                        </div>
+
+                        <div id="feedback-q4" class="hidden p-4 rounded-xl text-sm"></div>
+                    </div>
+
+                    <!-- Right: CHP 10% Threshold Gauge Visualizer -->
+                    <div id="q4GaugeCard" class="lg:col-span-5 bg-slate-50 p-5 rounded-2xl border border-slate-200/90 space-y-4 transition-all duration-300">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">CHP Threshold Meter</span>
+                            <span class="text-xs font-mono font-bold text-rose-600">Closure Limit: 10%</span>
+                        </div>
+
+                        <!-- Gauge Bar (0% to 15% scale, so 10% is at 66.67%) -->
+                        <div class="relative pt-6 pb-2">
+                            <!-- 10% Threshold Marker -->
+                            <div id="q4ThresholdPin" class="absolute top-0 bottom-0 border-l-2 border-dashed border-rose-500 z-10 flex flex-col items-center transition-transform" style="left: 66.67%;">
+                                <span class="bg-rose-600 text-white text-[10px] font-mono font-bold px-1.5 py-0.5 rounded -translate-x-1/2 shadow-xs whitespace-nowrap">
+                                    10% CHP Limit
+                                </span>
+                            </div>
+
+                            <div class="w-full h-8 bg-slate-200 rounded-xl overflow-hidden relative shadow-inner">
+                                <div id="q4GaugeFill" class="h-full bg-emerald-500 transition-all duration-500 rounded-l-xl" style="width: 0%;"></div>
+                            </div>
+
+                            <div class="flex justify-between text-[11px] font-mono text-slate-400 mt-1.5">
+                                <span>0%</span>
+                                <span>5%</span>
+                                <span class="text-rose-600 font-bold">10%</span>
+                                <span>15%+</span>
+                            </div>
+                        </div>
+
+                        <div id="q4VerdictPill" class="bg-white p-3 rounded-xl border border-slate-200 text-xs text-slate-600 flex items-center justify-between transition-all duration-300">
+                            <span>School Rate:</span>
+                            <span id="q4GaugeReadout" class="font-mono font-bold text-sm text-slate-800">-- %</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- COMPLETION SUMMARY BANNER (Revealed when all 4 Part 1 solved) -->
+            <section id="completionBanner" class="hidden bg-gradient-to-r from-emerald-600 to-teal-700 rounded-2xl p-6 text-white shadow-lg">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center text-3xl shrink-0">
+                            <i class="fa-solid fa-award text-amber-300"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold">Part 1 Completed! Ready for Challenge Mode?</h3>
+                            <p class="text-emerald-50 text-sm mt-0.5">
+                                You mastered the core worksheet! Test your skills with percentage increase, hospitalisation rates, and class comparisons in Part 2.
+                            </p>
+                        </div>
+                    </div>
+                    <button onclick="switchTab('challenge')" class="px-5 py-3 rounded-xl bg-white text-indigo-800 hover:bg-indigo-50 font-bold text-sm shadow-md transition shrink-0 cursor-pointer">
+                        Start Part 2: Challenge Mode <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===================================================================== -->
+        <!-- VIEW 2: PART 2 CHALLENGE MODE (QUESTIONS 5 TO 8)                      -->
+        <!-- ===================================================================== -->
+        <div id="challengeView" class="hidden space-y-6">
+
+            <!-- Challenge Header Banner -->
+            <div class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 rounded-2xl p-5 text-white shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-indigo-500/30 border border-indigo-400/40 flex items-center justify-center text-xl text-amber-300 shrink-0">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-indigo-300">Extension Practice • S.1 Percentages</span>
+                        <h2 class="text-lg font-extrabold">Part 2: Challenge Mode (Q5–Q8)</h2>
+                        <p class="text-xs text-indigo-100/85 mt-0.5">Apply percentage increase, hospitalisation rate indicators (&gt;1%), reverse percentages, and multi-class comparisons.</p>
+                    </div>
+                </div>
+                <div class="text-xs font-mono bg-white/10 px-3.5 py-2 rounded-xl border border-white/15 shrink-0">
+                    School Base Data: <strong>800</strong> students
+                </div>
+            </div>
+
+            <!-- QUESTION 5 CARD: PERCENTAGE INCREASE -->
+            <article id="card-q5" class="step-card bg-white rounded-2xl border-2 border-slate-200 p-5 sm:p-6 shadow-sm">
+                <div class="flex flex-wrap items-start justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span id="badge-q5" class="w-8 h-8 rounded-xl bg-indigo-900 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">5</span>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">Extension A • Percentage Increase</span>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900">The Next Day: Rising Sick Leave Count</h3>
+                        </div>
+                    </div>
+                    <span id="status-q5" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-500">Unsolved</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <div class="lg:col-span-7 space-y-4">
+                        <p class="text-slate-700 text-sm sm:text-base leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200/70">
+                            The next day, the number of students on sick leave in the whole school increases from <span class="font-mono font-bold text-slate-900 bg-white px-1.5 py-0.5 rounded border">32</span> to <span class="font-mono font-bold text-rose-600 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200">56</span> (out of <strong>800</strong> total students).
+                        </p>
+
+                        <!-- Part (a) -->
+                        <div class="space-y-1.5">
+                            <label for="input-q5a" class="block text-sm font-bold text-slate-800">
+                                (a) Find the percentage increase in the number of students on sick leave:
+                            </label>
+                            <div class="relative flex items-center w-36">
+                                <input type="number" id="input-q5a" step="any" placeholder="e.g. 75" onkeydown="if(event.key==='Enter') checkQ5()"
+                                    class="w-full pl-4 pr-8 py-2.5 rounded-xl border-2 border-slate-300 font-mono font-bold text-slate-900 focus:border-indigo-600 focus:outline-none transition">
+                                <span class="absolute right-3 font-mono font-bold text-slate-400">%</span>
+                            </div>
+                        </div>
+
+                        <!-- Part (b) -->
+                        <div class="space-y-1.5">
+                            <label for="input-q5b" class="block text-sm font-bold text-slate-800">
+                                (b) What is the new sick leave rate of the whole school (out of 800 students)?
+                            </label>
+                            <div class="relative flex items-center w-36">
+                                <input type="number" id="input-q5b" step="any" placeholder="e.g. 7" onkeydown="if(event.key==='Enter') checkQ5()"
+                                    class="w-full pl-4 pr-8 py-2.5 rounded-xl border-2 border-slate-300 font-mono font-bold text-slate-900 focus:border-indigo-600 focus:outline-none transition">
+                                <span class="absolute right-3 font-mono font-bold text-slate-400">%</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-2.5 pt-1">
+                            <button onclick="checkQ5()" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-semibold text-sm shadow-sm transition cursor-pointer">
+                                Check Q5 Answers
+                            </button>
+                            <button onclick="toggleHint('hint-q5')" class="px-3 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 font-semibold text-xs sm:text-sm transition cursor-pointer">
+                                <i class="fa-regular fa-lightbulb mr-1"></i> Hint
+                            </button>
+                            <button onclick="startAnim('q5')" class="px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 active:scale-95 text-white font-semibold text-xs sm:text-sm shadow-sm transition cursor-pointer flex items-center gap-1.5">
+                                <i class="fa-solid fa-play text-xs text-indigo-400"></i> Animate Solution
+                            </button>
+                        </div>
+
+                        <!-- Synchronized Animation Player Banner (Q5) -->
+                        <div id="anim-player-q5" class="hidden rounded-2xl bg-slate-900 text-white p-4 border border-slate-700 shadow-md space-y-3"></div>
+
+                        <div id="hint-q5" class="hidden p-3.5 rounded-xl bg-amber-50/80 border border-amber-200 text-xs sm:text-sm text-amber-950 space-y-1.5">
+                            <p class="font-bold"><i class="fa-solid fa-compass mr-1 text-amber-600"></i> Step-by-Step Formulas:</p>
+                            <p class="font-mono bg-white/80 p-2 rounded border border-amber-200/80 text-xs">
+                                (a) % Increase = [(New &minus; Original) &divide; Original] &times; 100% = [(56 &minus; 32) &divide; 32] &times; 100%
+                            </p>
+                            <p class="font-mono bg-white/80 p-2 rounded border border-amber-200/80 text-xs">
+                                (b) New Sick Leave Rate = (56 &divide; 800) &times; 100%
+                            </p>
+                        </div>
+
+                        <div id="feedback-q5" class="hidden p-4 rounded-xl text-sm"></div>
+                    </div>
+
+                    <!-- Right: Before vs After Bar Visual -->
+                    <div class="lg:col-span-5 bg-slate-50 p-4 rounded-2xl border border-slate-200/90 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Day-over-Day Comparison</span>
+                            <span id="q5IncreaseBadge" class="text-xs font-mono font-bold text-rose-600">+24 students</span>
+                        </div>
+
+                        <div class="space-y-3 bg-white p-3.5 rounded-xl border border-slate-200">
+                            <div id="q5Day1Box" class="p-1.5 rounded-lg transition-all duration-300">
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span class="text-slate-600">Day 1 (Original Base = 100%)</span>
+                                    <span class="font-mono font-bold text-slate-800">32 students</span>
+                                </div>
+                                <div class="w-full h-5 bg-slate-100 rounded-lg overflow-hidden">
+                                    <div id="q5Day1Bar" class="h-full bg-teal-600 rounded-lg transition-all duration-500" style="width: 57.1%;"></div>
+                                </div>
+                            </div>
+                            <div id="q5Day2Box" class="p-1.5 rounded-lg transition-all duration-300">
+                                <div class="flex justify-between text-xs font-semibold mb-1">
+                                    <span class="text-slate-600">Day 2 (New Total)</span>
+                                    <span class="font-mono font-bold text-rose-600">56 students</span>
+                                </div>
+                                <div class="w-full h-5 bg-slate-100 rounded-lg overflow-hidden flex">
+                                    <div id="q5Day2BaseBar" class="h-full bg-teal-600 transition-all duration-500" style="width: 57.1%;" title="Original 32"></div>
+                                    <div id="q5Day2IncBar" class="h-full bg-rose-500 flex items-center justify-center text-[10px] font-mono font-bold text-white transition-all duration-500" style="width: 42.9%;" title="Increase +24">+24</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Whole-School Rate Sub-Bar (Part b) -->
+                        <div id="q5SchoolRateBox" class="bg-white p-3 rounded-xl border border-slate-200 space-y-1.5 transition-all duration-300">
+                            <div class="flex justify-between text-xs font-semibold">
+                                <span class="text-slate-600">New Whole-School Rate (56 / 800)</span>
+                                <span id="q5SchoolRateLabel" class="font-mono font-bold text-indigo-700">-- %</span>
+                            </div>
+                            <div class="w-full h-3.5 bg-slate-100 rounded-full overflow-hidden">
+                                <div id="q5SchoolRateBar" class="h-full bg-indigo-600 rounded-full transition-all duration-700" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 6 CARD: HOSPITALISATION RATE INDICATOR -->
+            <article id="card-q6" class="step-card bg-white rounded-2xl border-2 border-slate-200 p-5 sm:p-6 shadow-sm">
+                <div class="flex flex-wrap items-start justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span id="badge-q6" class="w-8 h-8 rounded-xl bg-indigo-900 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">6</span>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">Extension B • CHP Hospitalisation Indicator (&gt; 1%)</span>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900">Evaluating Severe Cases &amp; Hospitalisation Rate</h3>
+                        </div>
+                    </div>
+                    <span id="status-q6" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-500">Unsolved</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <div class="lg:col-span-7 space-y-4">
+                        <p class="text-slate-700 text-sm sm:text-base leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200/70">
+                            Out of the <span class="font-mono font-bold text-slate-900 bg-white px-1.5 py-0.5 rounded border">800</span> students in the school, <span class="font-mono font-bold text-rose-600 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200">10</span> students are admitted to the hospital due to influenza.
+                        </p>
+
+                        <!-- Part (a) -->
+                        <div class="space-y-1.5">
+                            <label for="input-q6a" class="block text-sm font-bold text-slate-800">
+                                (a) Calculate the hospitalisation rate of the school (%):
+                            </label>
+                            <div class="relative flex items-center w-36">
+                                <input type="number" id="input-q6a" step="any" placeholder="e.g. 1.25" oninput="updateQ6Gauge()"
+                                    class="w-full pl-4 pr-8 py-2.5 rounded-xl border-2 border-slate-300 font-mono font-bold text-slate-900 focus:border-indigo-600 focus:outline-none transition">
+                                <span class="absolute right-3 font-mono font-bold text-slate-400">%</span>
+                            </div>
+                        </div>
+
+                        <!-- Part (b) -->
+                        <div class="space-y-2">
+                            <span class="block text-sm font-bold text-slate-800">
+                                (b) According to the CHP Expert Group guidelines, does this single indicator meet the threshold for considering school closure?
+                            </span>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <button type="button" id="btnHospYes" onclick="selectQ6Decision('yes')"
+                                    class="p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-rose-300 text-left transition flex items-center gap-3 cursor-pointer">
+                                    <span class="w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center shrink-0" id="radioHospYes"></span>
+                                    <div>
+                                        <div class="text-xs sm:text-sm font-bold text-slate-800">Yes, meets indicator</div>
+                                        <div class="text-[11px] text-slate-500">Exceeds the &gt; 1% threshold</div>
+                                    </div>
+                                </button>
+                                <button type="button" id="btnHospNo" onclick="selectQ6Decision('no')"
+                                    class="p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-emerald-300 text-left transition flex items-center gap-3 cursor-pointer">
+                                    <span class="w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center shrink-0" id="radioHospNo"></span>
+                                    <div>
+                                        <div class="text-xs sm:text-sm font-bold text-slate-800">No, below threshold</div>
+                                        <div class="text-[11px] text-slate-500">Does not exceed 1%</div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-2.5 pt-1">
+                            <button onclick="checkQ6()" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-semibold text-sm shadow-sm transition cursor-pointer">
+                                Check Q6 Answers
+                            </button>
+                            <button onclick="toggleHint('hint-q6')" class="px-3 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 font-semibold text-xs sm:text-sm transition cursor-pointer">
+                                <i class="fa-regular fa-lightbulb mr-1"></i> Hint
+                            </button>
+                            <button onclick="startAnim('q6')" class="px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 active:scale-95 text-white font-semibold text-xs sm:text-sm shadow-sm transition cursor-pointer flex items-center gap-1.5">
+                                <i class="fa-solid fa-play text-xs text-indigo-400"></i> Animate Solution
+                            </button>
+                        </div>
+
+                        <!-- Synchronized Animation Player Banner (Q6) -->
+                        <div id="anim-player-q6" class="hidden rounded-2xl bg-slate-900 text-white p-4 border border-slate-700 shadow-md space-y-3"></div>
+
+                        <div id="hint-q6" class="hidden p-3.5 rounded-xl bg-amber-50/80 border border-amber-200 text-xs sm:text-sm text-amber-950 space-y-1">
+                            <p class="font-bold"><i class="fa-solid fa-compass mr-1 text-amber-600"></i> Formula &amp; Guideline Check:</p>
+                            <p class="font-mono bg-white/80 p-2 rounded border border-amber-200/80 text-xs">
+                                Hospitalisation Rate = (10 &divide; 800) &times; 100%
+                            </p>
+                            <p class="text-xs pt-1">Check the CHP memo above: closure may be considered when the hospitalisation rate is <strong>more than 1%</strong>.</p>
+                        </div>
+
+                        <div id="feedback-q6" class="hidden p-4 rounded-xl text-sm"></div>
+                    </div>
+
+                    <!-- Right: 1% Hospitalisation Threshold Meter -->
+                    <div id="q6GaugeCard" class="lg:col-span-5 bg-slate-50 p-5 rounded-2xl border border-slate-200/90 space-y-4 transition-all duration-300">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Hospitalisation Meter</span>
+                            <span class="text-xs font-mono font-bold text-rose-600">Limit: &gt; 1.0%</span>
+                        </div>
+
+                        <!-- Gauge (0% to 2.0% scale, so 1.0% is at 50%) -->
+                        <div class="relative pt-6 pb-2">
+                            <div id="q6ThresholdPin" class="absolute top-0 bottom-0 border-l-2 border-dashed border-rose-500 z-10 flex flex-col items-center" style="left: 50%;">
+                                <span class="bg-rose-600 text-white text-[10px] font-mono font-bold px-1.5 py-0.5 rounded -translate-x-1/2 shadow-xs whitespace-nowrap">
+                                    1.0% CHP Limit
+                                </span>
+                            </div>
+
+                            <div class="w-full h-8 bg-slate-200 rounded-xl overflow-hidden relative shadow-inner">
+                                <div id="q6GaugeFill" class="h-full bg-emerald-500 transition-all duration-500 rounded-l-xl" style="width: 0%;"></div>
+                            </div>
+
+                            <div class="flex justify-between text-[11px] font-mono text-slate-400 mt-1.5">
+                                <span>0%</span>
+                                <span class="text-rose-600 font-bold">1.0%</span>
+                                <span>2.0%+</span>
+                            </div>
+                        </div>
+
+                        <div id="q6VerdictPill" class="bg-white p-3 rounded-xl border border-slate-200 text-xs text-slate-600 flex items-center justify-between transition-all duration-300">
+                            <span>Hospitalisation Rate:</span>
+                            <span id="q6GaugeReadout" class="font-mono font-bold text-sm text-slate-800">-- %</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 7 CARD: REVERSE PERCENTAGE (TEACHING STAFF) -->
+            <article id="card-q7" class="step-card bg-white rounded-2xl border-2 border-slate-200 p-5 sm:p-6 shadow-sm">
+                <div class="flex flex-wrap items-start justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span id="badge-q7" class="w-8 h-8 rounded-xl bg-indigo-900 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">7</span>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">Extension C • Reverse Percentage</span>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900">Finding Total Teaching Staff</h3>
+                        </div>
+                    </div>
+                    <span id="status-q7" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-500">Unsolved</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <div class="lg:col-span-7 space-y-4">
+                        <p class="text-slate-700 text-sm sm:text-base leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200/70">
+                            There are <span class="font-mono font-bold text-rose-600 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200">12</span> teachers on sick leave today, which accounts for <span class="font-mono font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded border border-indigo-200">15%</span> of the total teaching staff in the school. Find the <strong>total number of teachers in the school</strong>.
+                        </p>
+
+                        <div class="flex flex-wrap items-center gap-2.5">
+                            <label for="input-q7" class="text-sm font-semibold text-slate-700">Your Answer:</label>
+                            <div class="relative flex items-center">
+                                <input type="number" id="input-q7" step="1" placeholder="e.g. 80" onkeydown="if(event.key==='Enter') checkQ7()"
+                                    class="w-36 pl-4 pr-16 py-2.5 rounded-xl border-2 border-slate-300 font-mono font-bold text-slate-900 focus:border-indigo-600 focus:outline-none transition">
+                                <span class="absolute right-3 text-xs font-semibold text-slate-400">teachers</span>
+                            </div>
+                            <button onclick="checkQ7()" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-semibold text-sm shadow-sm transition cursor-pointer">
+                                Check Answer
+                            </button>
+                            <button onclick="toggleHint('hint-q7')" class="px-3 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 font-semibold text-xs sm:text-sm transition cursor-pointer">
+                                <i class="fa-regular fa-lightbulb mr-1"></i> Hint
+                            </button>
+                            <button onclick="startAnim('q7')" class="px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 active:scale-95 text-white font-semibold text-xs sm:text-sm shadow-sm transition cursor-pointer flex items-center gap-1.5">
+                                <i class="fa-solid fa-play text-xs text-indigo-400"></i> Animate Solution
+                            </button>
+                        </div>
+
+                        <!-- Synchronized Animation Player Banner (Q7) -->
+                        <div id="anim-player-q7" class="hidden rounded-2xl bg-slate-900 text-white p-4 border border-slate-700 shadow-md space-y-3"></div>
+
+                        <div id="hint-q7" class="hidden p-3.5 rounded-xl bg-amber-50/80 border border-amber-200 text-xs sm:text-sm text-amber-950 space-y-1">
+                            <p class="font-bold"><i class="fa-solid fa-compass mr-1 text-amber-600"></i> Reverse Percentage Tip:</p>
+                            <p>Let <span class="font-mono font-bold">T</span> be the total number of teachers.</p>
+                            <p class="font-mono bg-white/80 p-2 rounded border border-amber-200/80 text-xs">
+                                T &times; 15% = 12 &nbsp;&rArr;&nbsp; T = 12 &divide; 15% = 12 &divide; 0.15
+                            </p>
+                        </div>
+
+                        <div id="feedback-q7" class="hidden p-4 rounded-xl text-sm"></div>
+                    </div>
+
+                    <!-- Right: 20-Segment (5% each) Part-to-Whole Staff Visual -->
+                    <div class="lg:col-span-5 bg-slate-50 p-4 rounded-2xl border border-slate-200/90 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">20 Blocks &times; 5% = 100%</span>
+                            <span id="q7UnitTag" class="text-xs font-mono font-semibold text-indigo-700">15% = 12 teachers</span>
+                        </div>
+                        <!-- 20 blocks representing 5% each (first 3 blocks = 15% = 12 teachers = 4 per block) -->
+                        <div id="q7BlocksGrid" class="grid grid-cols-10 gap-1 p-2 bg-white rounded-xl border border-slate-200">
+                            <!-- Populated by JS -->
+                        </div>
+                        <div class="flex justify-between text-xs font-mono text-slate-600 px-1">
+                            <span>Sick Leave (15%): <strong class="text-rose-600">12</strong></span>
+                            <span>Total Staff (100%): <strong id="q7TotalLabel" class="text-slate-900">?</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 8 CARD: MULTI-STEP COMPARISON (CLASS 1A VS CLASS 1B) -->
+            <article id="card-q8" class="step-card bg-white rounded-2xl border-2 border-slate-200 p-5 sm:p-6 shadow-sm">
+                <div class="flex flex-wrap items-start justify-between gap-2 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span id="badge-q8" class="w-8 h-8 rounded-xl bg-indigo-900 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0">8</span>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">Extension D • Multi-Step Comparison</span>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-900">Comparing Absentee Count vs. Sick Leave Rate</h3>
+                        </div>
+                    </div>
+                    <span id="status-q8" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-500">Unsolved</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <div class="lg:col-span-7 space-y-4">
+                        <p class="text-slate-700 text-sm sm:text-base leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200/70">
+                            In <strong>Class 1A</strong>, there are <span class="font-mono font-bold text-slate-900 bg-white px-1.5 py-0.5 rounded border">36</span> students and <span class="font-mono font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded border border-indigo-200">25%</span> of them are absent today. In <strong>Class 1B</strong>, there are <span class="font-mono font-bold text-slate-900 bg-white px-1.5 py-0.5 rounded border">40</span> students and <span class="font-mono font-bold text-rose-600 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200">11</span> of them are absent today.
+                        </p>
+
+                        <!-- Scratchpad helper inputs -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-indigo-50/50 p-3.5 rounded-xl border border-indigo-100">
+                            <div>
+                                <label for="input-q8-1a" class="block text-xs font-bold text-slate-700 mb-1">Class 1A Absent Students:</label>
+                                <div class="relative flex items-center">
+                                    <input type="number" id="input-q8-1a" placeholder="36 × 25%" class="w-full pl-3 pr-14 py-2 rounded-lg border border-slate-300 bg-white font-mono text-sm font-bold focus:border-indigo-600 focus:outline-none">
+                                    <span class="absolute right-2.5 text-[11px] text-slate-400">students</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="input-q8-1b" class="block text-xs font-bold text-slate-700 mb-1">Class 1B Sick Leave Rate:</label>
+                                <div class="relative flex items-center">
+                                    <input type="number" id="input-q8-1b" step="any" placeholder="(11 ÷ 40) × 100" class="w-full pl-3 pr-8 py-2 rounded-lg border border-slate-300 bg-white font-mono text-sm font-bold focus:border-indigo-600 focus:outline-none">
+                                    <span class="absolute right-3 font-mono text-xs font-bold text-slate-400">%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Part (a) Selector -->
+                        <div class="space-y-1.5">
+                            <span class="block text-sm font-bold text-slate-800">(a) Which class has a higher number of absent students?</span>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button type="button" id="btnQ8a-1A" onclick="selectQ8('a', '1A')"
+                                    class="p-2.5 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-300 text-sm font-bold text-slate-800 transition cursor-pointer">
+                                    Class 1A
+                                </button>
+                                <button type="button" id="btnQ8a-1B" onclick="selectQ8('a', '1B')"
+                                    class="p-2.5 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-300 text-sm font-bold text-slate-800 transition cursor-pointer">
+                                    Class 1B
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Part (b) Selector -->
+                        <div class="space-y-1.5">
+                            <span class="block text-sm font-bold text-slate-800">(b) Which class has a higher sick leave rate?</span>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button type="button" id="btnQ8b-1A" onclick="selectQ8('b', '1A')"
+                                    class="p-2.5 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-300 text-sm font-bold text-slate-800 transition cursor-pointer">
+                                    Class 1A
+                                </button>
+                                <button type="button" id="btnQ8b-1B" onclick="selectQ8('b', '1B')"
+                                    class="p-2.5 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-300 text-sm font-bold text-slate-800 transition cursor-pointer">
+                                    Class 1B
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-2.5 pt-1">
+                            <button onclick="checkQ8()" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-semibold text-sm shadow-sm transition cursor-pointer">
+                                Check Q8 Answers
+                            </button>
+                            <button onclick="toggleHint('hint-q8')" class="px-3 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 font-semibold text-xs sm:text-sm transition cursor-pointer">
+                                <i class="fa-regular fa-lightbulb mr-1"></i> Hint
+                            </button>
+                            <button onclick="startAnim('q8')" class="px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 active:scale-95 text-white font-semibold text-xs sm:text-sm shadow-sm transition cursor-pointer flex items-center gap-1.5">
+                                <i class="fa-solid fa-play text-xs text-indigo-400"></i> Animate Solution
+                            </button>
+                        </div>
+
+                        <!-- Synchronized Animation Player Banner (Q8) -->
+                        <div id="anim-player-q8" class="hidden rounded-2xl bg-slate-900 text-white p-4 border border-slate-700 shadow-md space-y-3"></div>
+
+                        <div id="hint-q8" class="hidden p-3.5 rounded-xl bg-amber-50/80 border border-amber-200 text-xs sm:text-sm text-amber-950 space-y-1">
+                            <p class="font-bold"><i class="fa-solid fa-compass mr-1 text-amber-600"></i> Convert Both Classes to the Same Units:</p>
+                            <p class="font-mono bg-white/80 p-2 rounded border border-amber-200/80 text-xs">
+                                Class 1A absent = 36 &times; 25% = 9 students (Rate = 25%)<br>
+                                Class 1B absent = 11 students (Rate = 11 &divide; 40 &times; 100% = 27.5%)
+                            </p>
+                        </div>
+
+                        <div id="feedback-q8" class="hidden p-4 rounded-xl text-sm"></div>
+                    </div>
+
+                    <!-- Right: Side-by-Side Comparison Cards with Animated Bars -->
+                    <div class="lg:col-span-5 bg-slate-50 p-4 rounded-2xl border border-slate-200/90 space-y-3">
+                        <span class="text-xs font-bold text-slate-700 uppercase tracking-wider block">Class Data Sheet</span>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div id="q8Box1A" class="bg-white p-3.5 rounded-xl border-2 border-slate-200 space-y-2 transition-all duration-300">
+                                <div class="text-xs font-extrabold text-indigo-700 uppercase">Class 1A</div>
+                                <div class="text-xs text-slate-500">Total: <strong class="font-mono text-slate-800">36</strong></div>
+                                <div class="text-xs text-slate-500">Absent: <strong id="q8Card1AAbsent" class="font-mono text-rose-600">?</strong></div>
+                                <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+                                    <div id="q8Bar1A" class="h-full bg-indigo-500 rounded-full transition-all duration-700" style="width: 0%;"></div>
+                                </div>
+                                <div class="text-xs text-slate-500">Rate: <strong class="font-mono text-indigo-700">25%</strong></div>
+                            </div>
+                            <div id="q8Box1B" class="bg-white p-3.5 rounded-xl border-2 border-slate-200 space-y-2 transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-extrabold text-teal-700 uppercase">Class 1B</span>
+                                    <span id="q8WinnerBadge" class="hidden text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800">Higher</span>
+                                </div>
+                                <div class="text-xs text-slate-500">Total: <strong class="font-mono text-slate-800">40</strong></div>
+                                <div class="text-xs text-slate-500">Absent: <strong class="font-mono text-rose-600">11</strong></div>
+                                <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+                                    <div id="q8Bar1B" class="h-full bg-teal-600 rounded-full transition-all duration-700" style="width: 0%;"></div>
+                                </div>
+                                <div class="text-xs text-slate-500">Rate: <strong id="q8Card1BRate" class="font-mono text-teal-700">? %</strong></div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500">
+                            Tip: Always compare <strong>headcount</strong> with headcount, and <strong>percentage</strong> with percentage!
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- GRAND COMPLETION BANNER (Revealed when all 8 questions are solved) -->
+            <section id="grandCompletionBanner" class="hidden bg-gradient-to-r from-indigo-600 via-purple-600 to-teal-600 rounded-2xl p-6 text-white shadow-lg">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center text-3xl shrink-0">
+                            <i class="fa-solid fa-crown text-amber-300"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold">All 8 Questions Mastered! Outstanding Work!</h3>
+                            <p class="text-indigo-50 text-sm mt-0.5">
+                                You completed both Part 1 (Worksheet) and Part 2 (Challenge Mode) with full accuracy.
+                            </p>
+                        </div>
+                    </div>
+                    <button onclick="switchTab('simulator')" class="px-5 py-3 rounded-xl bg-white text-indigo-900 hover:bg-indigo-50 font-bold text-sm shadow-md transition shrink-0 cursor-pointer">
+                        Explore Outbreak Lab <i class="fa-solid fa-flask ml-1.5"></i>
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===================================================================== -->
+        <!-- VIEW 3: OUTBREAK SIMULATOR & RANDOMIZED EXTRA PRACTICE                -->
+        <!-- ===================================================================== -->
+        <div id="simulatorView" class="hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Left Controls: Outbreak Scenario Sliders -->
+                <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-chp-700">Interactive Policy Lab</span>
+                        <h2 class="text-xl font-extrabold text-slate-900 mt-0.5">CHP Outbreak Decision Simulator</h2>
+                        <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                            Adjust the school population and outbreak figures below to see how CHP evaluates all four Expert Group indicators in real time.
+                        </p>
+                    </div>
+
+                    <!-- Slider 1: Total School Population -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <label for="simPop" class="font-bold text-slate-700">Total School Population</label>
+                            <span id="simPopVal" class="font-mono font-bold text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-lg">800 students</span>
+                        </div>
+                        <input type="range" id="simPop" min="200" max="1500" step="50" value="800" oninput="updateSimulator()"
+                            class="w-full accent-indigo-600 cursor-pointer">
+                    </div>
+
+                    <!-- Slider 2: Students on Sick Leave -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <label for="simSick" class="font-bold text-slate-700">Students on Sick Leave</label>
+                            <span id="simSickVal" class="font-mono font-bold text-rose-600 bg-rose-50 px-2.5 py-0.5 rounded-lg">32 students</span>
+                        </div>
+                        <input type="range" id="simSick" min="0" max="250" step="1" value="32" oninput="updateSimulator()"
+                            class="w-full accent-rose-600 cursor-pointer">
+                    </div>
+
+                    <!-- Slider 3: Hospitalised Students -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <label for="simHosp" class="font-bold text-slate-700">Hospitalised Students (&gt; 1% indicator)</label>
+                            <span id="simHospVal" class="font-mono font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-lg">2 students</span>
+                        </div>
+                        <input type="range" id="simHosp" min="0" max="25" step="1" value="2" oninput="updateSimulator()"
+                            class="w-full accent-amber-600 cursor-pointer">
+                    </div>
+
+                    <!-- Slider 4: ICU Admissions -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <label for="simIcu" class="font-bold text-slate-700">ICU Admissions (&ge; 2 indicator)</label>
+                            <span id="simIcuVal" class="font-mono font-bold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-lg">0 admissions</span>
+                        </div>
+                        <input type="range" id="simIcu" min="0" max="5" step="1" value="0" oninput="updateSimulator()"
+                            class="w-full accent-purple-600 cursor-pointer">
+                    </div>
+                </div>
+
+                <!-- Right Live Assessment Panel -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div id="simResultCard" class="rounded-2xl border-2 border-emerald-300 bg-emerald-50/70 p-6 space-y-4 transition-all">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-600">CHP Assessment Status</span>
+                            <span id="simStatusBadge" class="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-600 text-white">
+                                KEEP SCHOOL OPEN
+                            </span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white p-3.5 rounded-xl border border-slate-200/80">
+                                <div class="text-xs text-slate-500">Sick Leave Rate</div>
+                                <div id="simSickRate" class="font-mono text-2xl font-extrabold text-slate-900 mt-0.5">4.0%</div>
+                                <div id="simSickNote" class="text-[11px] font-semibold text-emerald-700 mt-1">Below 10% limit</div>
+                            </div>
+                            <div class="bg-white p-3.5 rounded-xl border border-slate-200/80">
+                                <div class="text-xs text-slate-500">Hospitalisation Rate</div>
+                                <div id="simHospRate" class="font-mono text-2xl font-extrabold text-slate-900 mt-0.5">0.25%</div>
+                                <div id="simHospNote" class="text-[11px] font-semibold text-emerald-700 mt-1">Within &le; 1% limit</div>
+                            </div>
+                        </div>
+
+                        <p id="simExplanation" class="text-xs sm:text-sm text-slate-700 leading-relaxed bg-white/80 p-3.5 rounded-xl border border-slate-200/70">
+                            All indicators are below the CHP Expert Group thresholds. Standard hygiene and monitoring continue.
+                        </p>
+                    </div>
+
+                    <!-- Bonus Randomized Practice Generator -->
+                    <div class="bg-slate-900 text-white rounded-2xl p-5 shadow-md space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-chp-400">Infinite Skill Drill</span>
+                            <button onclick="generateRandomProblem()" class="px-3 py-1.5 rounded-lg bg-chp-600 hover:bg-chp-500 text-white text-xs font-bold transition cursor-pointer">
+                                <i class="fa-solid fa-shuffle mr-1"></i> New Question
+                            </button>
+                        </div>
+                        <p id="randomQuestionText" class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                            Click "New Question" to generate randomized S.1 percentage problems (Sick Leave %, Reverse %, % Increase, and Hospitalisation Rate)!
+                        </p>
+                        <div id="randomAnswerControls" class="hidden pt-2 space-y-2">
+                            <div class="flex items-center gap-2">
+                                <input type="number" id="randomUserAns" step="any" placeholder="Answer" onkeydown="if(event.key==='Enter') checkRandomProblem()" class="w-32 px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-white font-mono text-sm focus:outline-none focus:border-chp-500">
+                                <span id="randomUnitLabel" class="text-xs font-mono text-slate-400">%</span>
+                                <button onclick="checkRandomProblem()" class="px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold cursor-pointer">Check</button>
+                            </div>
+                            <p id="randomFeedback" class="text-xs font-medium"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-10 border-t border-slate-200 bg-white py-4 text-center text-xs text-slate-400">
+        Interactive S.1 Mathematics Learning Module • Based on Centre for Health Protection (CHP) School Guidelines
+    </footer>
+
+    <!-- Application Logic -->
+    <script>
+        // Application State (Tracks all 8 questions across Part 1 & Part 2)
+        const state = {
+            solved: {
+                q1: false, q2: false, q3: false, q4: false,
+                q5: false, q6: false, q7: false, q8: false
+            },
+            q1HighlightGroups: false,
+            q4Decision: null,
+            q6Decision: null,
+            q8Choice: { a: null, b: null },
+            randomProblem: null,
+            activeAnim: {
+                qKey: null,
+                stepIndex: 0,
+                playing: false,
+                timerId: null,
+                subTimers: []
+            }
+        };
+
+        // Initialize UI on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDeskGrid(false);
+            renderQ7Blocks();
+            updateSimulator();
+        });
+
+        // Toggle CHP Guidelines Memo
+        function toggleMemo() {
+            const content = document.getElementById('memoContent');
+            const chevron = document.getElementById('memoChevron');
+            const label = document.getElementById('memoToggleLabel');
+            const isHidden = content.classList.toggle('hidden');
+            chevron.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+            label.textContent = isHidden ? 'Show Document' : 'Hide Document';
+        }
+
+        // Toggle Hint Boxes
+        function toggleHint(id) {
+            document.getElementById(id).classList.toggle('hidden');
+        }
+
+        // Tab Switching (Supports 'worksheet', 'challenge', and 'simulator')
+        function switchTab(tab) {
+            stopAnyAnimation();
+            const wsView = document.getElementById('worksheetView');
+            const chView = document.getElementById('challengeView');
+            const simView = document.getElementById('simulatorView');
+            const tabWs = document.getElementById('tabWorksheet');
+            const tabCh = document.getElementById('tabChallenge');
+            const tabSim = document.getElementById('tabSimulator');
+
+            const inactiveClass = 'flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition shrink-0 cursor-pointer';
+
+            wsView.classList.add('hidden');
+            chView.classList.add('hidden');
+            simView.classList.add('hidden');
+            tabWs.className = inactiveClass;
+            tabCh.className = inactiveClass;
+            tabSim.className = inactiveClass;
+
+            if (tab === 'worksheet') {
+                wsView.classList.remove('hidden');
+                tabWs.className = 'flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-chp-600 text-white shadow-sm transition shrink-0 cursor-pointer';
+            } else if (tab === 'challenge') {
+                chView.classList.remove('hidden');
+                tabCh.className = 'flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600 text-white shadow-sm transition shrink-0 cursor-pointer';
+            } else {
+                simView.classList.remove('hidden');
+                tabSim.className = 'flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-chp-600 text-white shadow-sm transition shrink-0 cursor-pointer';
+            }
+        }
+
+        // =====================================================================
+        // EXPLICIT DIAGRAM-SYNCHRONIZED SOLUTION ANIMATION ENGINE (Q1 – Q8)
+        // =====================================================================
+
+        const animationScripts = {
+            q1: [
+                {
+                    title: 'Step 1 of 4 • Identify the Whole (Total Class Size)',
+                    formula: 'Total students in Class 1E = 40',
+                    narration: 'Count all 5 columns of 8 desks in Class 1E: there are 40 students in total.',
+                    duration: 3200,
+                    apply: () => {
+                        renderDeskGrid(false);
+                        document.getElementById('q1BarLabel').textContent = '0 / 40 (0%)';
+                        document.getElementById('q1PctBar').style.width = '0%';
+                        // Wave across all 40 desks
+                        for (let c = 0; c < 5; c++) {
+                            const t = setTimeout(() => {
+                                const colEl = document.getElementById(`q1-col-${c}`);
+                                if (colEl) colEl.classList.add('col-highlight');
+                                for (let r = 0; r < 8; r++) {
+                                    const d = document.getElementById(`desk-${c * 8 + r + 1}`);
+                                    if (d) d.classList.add('desk-wave');
+                                }
+                            }, c * 240);
+                            state.activeAnim.subTimers.push(t);
+                        }
+                    }
+                },
+                {
+                    title: 'Step 2 of 4 • Highlight the Part (Sick Leave Students)',
+                    formula: 'Part = 8 sick-leave students out of 40',
+                    narration: 'Now spotlight the 8 students taking sick leave today (Column 1 highlighted in crimson).',
+                    duration: 3400,
+                    apply: () => {
+                        renderDeskGrid(false);
+                        for (let i = 1; i <= 40; i++) {
+                            const d = document.getElementById(`desk-${i}`);
+                            if (d) {
+                                d.classList.remove('desk-wave');
+                                if (i > 8) d.classList.add('opacity-40');
+                            }
+                        }
+                        for (let i = 1; i <= 8; i++) {
+                            const t = setTimeout(() => {
+                                const d = document.getElementById(`desk-${i}`);
+                                if (d) {
+                                    d.classList.add('desk-pulse');
+                                    d.textContent = i;
+                                }
+                            }, (i - 1) * 220);
+                            state.activeAnim.subTimers.push(t);
+                        }
+                        document.getElementById('q1BarLabel').textContent = '8 / 40 students';
+                        document.getElementById('q1PctBar').style.width = '20%';
+                    }
+                },
+                {
+                    title: 'Step 3 of 4 • Simplify the Fraction (5 Equal Columns)',
+                    formula: '8 ÷ 40 = 1/5 (1 out of 5 equal columns)',
+                    narration: '40 desks divide neatly into 5 equal columns of 8 desks. Sick leave fills 1 out of 5 columns!',
+                    duration: 3400,
+                    apply: () => {
+                        renderDeskGrid(true);
+                        for (let c = 0; c < 5; c++) {
+                            const t = setTimeout(() => {
+                                const colEl = document.getElementById(`q1-col-${c}`);
+                                if (colEl) {
+                                    colEl.classList.add(c === 0 ? 'glow-ring-rose' : 'col-highlight');
+                                }
+                            }, c * 220);
+                            state.activeAnim.subTimers.push(t);
+                        }
+                        document.getElementById('q1BarLabel').textContent = '1 / 5 of class';
+                        document.getElementById('q1PctBar').style.width = '20%';
+                    }
+                },
+                {
+                    title: 'Step 4 of 4 • Convert Fraction to Percentage',
+                    formula: '(8 ÷ 40) × 100% = (1/5) × 100% = 20%',
+                    narration: 'Multiply 1/5 by 100%: 20% of Class 1E is on sick leave today.',
+                    duration: 3800,
+                    apply: () => {
+                        renderDeskGrid(true);
+                        const col0 = document.getElementById('q1-col-0');
+                        if (col0) col0.classList.add('glow-ring-rose');
+                        document.getElementById('q1BarLabel').textContent = '8 / 40 = 20%';
+                        document.getElementById('q1PctBar').style.width = '20%';
+                    }
+                }
+            ],
+
+            q2: [
+                {
+                    title: 'Step 1 of 3 • Represent the Known 25% Quarter',
+                    formula: '25% of School Sick Leave = 8 students',
+                    narration: 'Class 1E has 8 sick students, which fills the first 25% quarter block of the school bar.',
+                    duration: 3200,
+                    apply: () => {
+                        resetQ2Visual();
+                        const b0 = document.getElementById('q2-block-0');
+                        b0.classList.add('glow-ring-rose', 'scale-105');
+                        document.getElementById('q2TotalReadout').textContent = '8 (for 25%)';
+                    }
+                },
+                {
+                    title: 'Step 2 of 3 • Replicate Across All 4 Quarters (100% ÷ 25% = 4)',
+                    formula: '100% = 25% + 25% + 25% + 25% (4 equal blocks)',
+                    narration: 'Since 100% contains four 25% blocks, each of the remaining 3 quarters also equals 8 students!',
+                    duration: 3600,
+                    apply: () => {
+                        resetQ2Visual();
+                        [1, 2, 3].forEach((idx, i) => {
+                            const t = setTimeout(() => {
+                                const blk = document.getElementById(`q2-block-${idx}`);
+                                const val = document.getElementById(`q2-block-val-${idx}`);
+                                blk.className = 'bg-rose-500 text-white rounded-xl p-3 text-center shadow-sm transition-all duration-300 pop-in';
+                                val.textContent = '+8';
+                            }, (i + 1) * 450);
+                            state.activeAnim.subTimers.push(t);
+                        });
+                    }
+                },
+                {
+                    title: 'Step 3 of 3 • Sum All 4 Blocks to Find 100%',
+                    formula: 'Total = 8 ÷ 25% = 8 × 4 = 32 students',
+                    narration: 'Adding all four quarters together gives 8 × 4 = 32 students on sick leave in the whole school.',
+                    duration: 3800,
+                    apply: () => {
+                        [0, 1, 2, 3].forEach(idx => {
+                            const blk = document.getElementById(`q2-block-${idx}`);
+                            blk.className = 'bg-rose-600 text-white rounded-xl p-3 text-center shadow-md transition-all duration-300';
+                            if (idx > 0) document.getElementById(`q2-block-val-${idx}`).textContent = '8';
+                        });
+                        const bracket = document.getElementById('q2Bracket');
+                        bracket.className = 'border-t-2 border-rose-500 bg-rose-50 rounded-b-xl py-2 text-center text-xs font-mono text-rose-900 font-bold pop-in';
+                        document.getElementById('q2TotalReadout').textContent = '8 × 4 = 32 students (100%)';
+                    }
+                }
+            ],
+
+            q3: [
+                {
+                    title: 'Step 1 of 3 • Anchor the Known 15% Segment',
+                    formula: '15% of Whole School = 120 Form 1 students',
+                    narration: 'Form 1 represents 15% of the school population bar and contains 120 students.',
+                    duration: 3200,
+                    apply: () => {
+                        const f1 = document.getElementById('q3Form1Bar');
+                        const exp = document.getElementById('q3ExpandBar');
+                        f1.style.width = '15%';
+                        f1.textContent = '15% (120)';
+                        f1.classList.add('glow-ring-indigo');
+                        exp.textContent = 'Remaining 85% = ?';
+                        document.getElementById('q3UnitBadge').textContent = '15% = 120';
+                        document.getElementById('q3TotalLabel').textContent = '?';
+                    }
+                },
+                {
+                    title: 'Step 2 of 3 • Find the 1% Unit Rate',
+                    formula: '1% of School = 120 ÷ 15 = 8 students',
+                    narration: 'Divide 120 students by 15% to find how many students equal 1%: 120 ÷ 15 = 8 students per 1%.',
+                    duration: 3400,
+                    apply: () => {
+                        const f1 = document.getElementById('q3Form1Bar');
+                        f1.classList.add('glow-ring-indigo');
+                        document.getElementById('q3UnitBadge').textContent = '1% = 120 ÷ 15 = 8 students';
+                        document.getElementById('q3ExpandBar').textContent = 'Each 1% block = 8 students';
+                    }
+                },
+                {
+                    title: 'Step 3 of 3 • Scale Up from 1% to 100%',
+                    formula: 'Total (100%) = 8 × 100 = 800 students (120 ÷ 0.15)',
+                    narration: 'Multiply 8 students per 1% by 100% across the entire bar to reach 800 students!',
+                    duration: 3800,
+                    apply: () => {
+                        const f1 = document.getElementById('q3Form1Bar');
+                        const exp = document.getElementById('q3ExpandBar');
+                        f1.classList.remove('glow-ring-indigo');
+                        exp.className = 'bg-indigo-500 text-white flex-1 flex items-center justify-center text-xs font-mono font-bold transition-all duration-700';
+                        exp.textContent = '85% = 680 students';
+                        animateNumberCounter('q3TotalLabel', 120, 800, 900, ' students');
+                    }
+                }
+            ],
+
+            q4: [
+                {
+                    title: 'Step 1 of 3 • Set Up the Whole-School Ratio',
+                    formula: 'Sick Leave Rate = (32 ÷ 800) × 100%',
+                    narration: 'Combine Q2 (32 sick students) and Q3 (800 total students) into the school-wide percentage formula.',
+                    duration: 3200,
+                    apply: () => {
+                        document.getElementById('q4GaugeFill').style.width = '0%';
+                        document.getElementById('q4GaugeReadout').textContent = '32 / 800';
+                        document.getElementById('q4GaugeCard').classList.add('glow-ring-teal');
+                    }
+                },
+                {
+                    title: 'Step 2 of 3 • Sweep Gauge to 4.0% & Compare to 10% Limit',
+                    formula: '(32 ÷ 800) × 100% = 0.04 × 100% = 4.0%',
+                    narration: 'Watch the green meter bar sweep to 4.0%—well to the left of the red 10% CHP closure threshold!',
+                    duration: 3600,
+                    apply: () => {
+                        const fill = document.getElementById('q4GaugeFill');
+                        // 4% on a 15% scale = 26.67%
+                        fill.style.width = `${(4 / 15) * 100}%`;
+                        fill.className = 'h-full bg-emerald-500 transition-all duration-700 rounded-l-xl';
+                        document.getElementById('q4GaugeReadout').textContent = '4.0% (< 10% Limit)';
+                        document.getElementById('q4ThresholdPin').classList.add('threshold-alert');
+                    }
+                },
+                {
+                    title: 'Step 3 of 3 • Apply CHP Guideline Decision',
+                    formula: '4.0% < 10%  ⇒  Do NOT close the school',
+                    narration: 'Because 4.0% is below the 10% threshold (and no severe indicators are triggered), the school remains open.',
+                    duration: 3800,
+                    apply: () => {
+                        document.getElementById('q4ThresholdPin').classList.remove('threshold-alert');
+                        document.getElementById('q4GaugeCard').classList.remove('glow-ring-teal');
+                        const pill = document.getElementById('q4VerdictPill');
+                        pill.className = 'bg-emerald-600 text-white p-3 rounded-xl border border-emerald-700 text-xs font-bold flex items-center justify-between pop-in';
+                        document.getElementById('q4GaugeReadout').className = 'font-mono font-extrabold text-sm text-white';
+                        document.getElementById('q4GaugeReadout').textContent = '4.0% • STAY OPEN ✓';
+                    }
+                }
+            ],
+
+            q5: [
+                {
+                    title: 'Step 1 of 4 • Establish Day 1 Original Base (32)',
+                    formula: 'Original Sick Leave (Day 1) = 32 students',
+                    narration: 'Percentage increase is always measured relative to the original Day 1 value of 32 students.',
+                    duration: 3000,
+                    apply: () => {
+                        document.getElementById('q5Day1Box').classList.add('glow-ring-teal', 'bg-teal-50/50');
+                        document.getElementById('q5Day2Box').classList.remove('glow-ring-rose', 'bg-rose-50/40');
+                        document.getElementById('q5Day2IncBar').style.width = '0%';
+                        document.getElementById('q5SchoolRateBar').style.width = '0%';
+                        document.getElementById('q5SchoolRateLabel').textContent = '-- %';
+                    }
+                },
+                {
+                    title: 'Step 2 of 4 • Find the Increase on Day 2 (56 − 32 = +24)',
+                    formula: 'Increase = 56 − 32 = +24 students',
+                    narration: 'Day 2 grows to 56 students: the original 32 plus a +24 student increase shown in striped crimson.',
+                    duration: 3400,
+                    apply: () => {
+                        document.getElementById('q5Day1Box').classList.remove('glow-ring-teal', 'bg-teal-50/50');
+                        document.getElementById('q5Day2Box').classList.add('glow-ring-rose', 'bg-rose-50/40');
+                        const incBar = document.getElementById('q5Day2IncBar');
+                        incBar.style.width = '42.9%';
+                        incBar.classList.add('animated-stripes');
+                        document.getElementById('q5IncreaseBadge').textContent = '56 − 32 = +24 students';
+                    }
+                },
+                {
+                    title: 'Step 3 of 4 • Calculate Percentage Increase (+24 ÷ 32)',
+                    formula: '% Increase = (24 ÷ 32) × 100% = (3/4) × 100% = +75%',
+                    narration: 'Compare the +24 increase against the original 32: 24/32 simplifies to 3/4, which is a 75% increase!',
+                    duration: 3600,
+                    apply: () => {
+                        document.getElementById('q5IncreaseBadge').textContent = '+24 / 32 = +75%';
+                        document.getElementById('q5IncreaseBadge').className = 'text-xs font-mono font-extrabold px-2 py-0.5 rounded bg-rose-600 text-white pop-in';
+                    }
+                },
+                {
+                    title: 'Step 4 of 4 • Find New Whole-School Rate (56 ÷ 800)',
+                    formula: 'New School Rate = (56 ÷ 800) × 100% = 7.0%',
+                    narration: 'Out of the 800 students in the whole school, 56 sick students equals a 7.0% sick leave rate.',
+                    duration: 3800,
+                    apply: () => {
+                        document.getElementById('q5Day2Box').classList.remove('glow-ring-rose', 'bg-rose-50/40');
+                        const rateBox = document.getElementById('q5SchoolRateBox');
+                        rateBox.classList.add('glow-ring-indigo');
+                        document.getElementById('q5SchoolRateBar').style.width = '70%'; // visual proportional bar
+                        document.getElementById('q5SchoolRateLabel').textContent = '56 / 800 = 7.0%';
+                    }
+                }
+            ],
+
+            q6: [
+                {
+                    title: 'Step 1 of 3 • Compute Hospitalisation Rate (10 out of 800)',
+                    formula: 'Hospitalisation Rate = (10 ÷ 800) × 100%',
+                    narration: 'Divide the 10 hospitalised students by the 800 total school population.',
+                    duration: 3200,
+                    apply: () => {
+                        document.getElementById('q6GaugeFill').style.width = '0%';
+                        document.getElementById('q6GaugeReadout').textContent = '10 / 800';
+                        document.getElementById('q6GaugeCard').classList.add('glow-ring-indigo');
+                    }
+                },
+                {
+                    title: 'Step 2 of 3 • Sweep Past the 1.0% CHP Limit to 1.25%',
+                    formula: '(10 ÷ 800) × 100% = 1.25%  (1.25% > 1.00%)',
+                    narration: 'Watch the meter cross right over the 1.0% dashed CHP line and land at 1.25% in the red alert zone!',
+                    duration: 3800,
+                    apply: () => {
+                        const fill = document.getElementById('q6GaugeFill');
+                        // 1.25% on 2.0% scale = 62.5%
+                        fill.style.width = '62.5%';
+                        fill.className = 'h-full bg-rose-500 transition-all duration-700 rounded-l-xl';
+                        document.getElementById('q6ThresholdPin').classList.add('threshold-alert');
+                        document.getElementById('q6GaugeReadout').textContent = '1.25% (> 1.0% Limit!)';
+                    }
+                },
+                {
+                    title: 'Step 3 of 3 • Trigger CHP Closure Consideration',
+                    formula: '1.25% > 1%  ⇒  YES, meets CHP closure indicator',
+                    narration: 'Indicator 2 triggers when hospitalisation exceeds 1%. Since 1.25% > 1%, CHP may consider school closure.',
+                    duration: 3800,
+                    apply: () => {
+                        document.getElementById('q6ThresholdPin').classList.remove('threshold-alert');
+                        document.getElementById('q6GaugeCard').classList.remove('glow-ring-indigo');
+                        const pill = document.getElementById('q6VerdictPill');
+                        pill.className = 'bg-rose-600 text-white p-3 rounded-xl border border-rose-700 text-xs font-bold flex items-center justify-between pop-in';
+                        document.getElementById('q6GaugeReadout').className = 'font-mono font-extrabold text-sm text-white';
+                        document.getElementById('q6GaugeReadout').textContent = '1.25% • EXCEEDS 1% ✓';
+                    }
+                }
+            ],
+
+            q7: [
+                {
+                    title: 'Step 1 of 3 • Highlight the Known 15% (3 Blocks of 5%)',
+                    formula: '15% of Teaching Staff = 12 teachers',
+                    narration: 'The 12 teachers on sick leave fill the first 3 blocks (3 × 5% = 15%) of the 20-block staff bar.',
+                    duration: 3200,
+                    apply: () => {
+                        renderQ7Blocks();
+                        for (let i = 0; i < 3; i++) {
+                            const b = document.getElementById(`q7-blk-${i}`);
+                            if (b) b.classList.add('glow-ring-rose', 'scale-105');
+                        }
+                        document.getElementById('q7UnitTag').textContent = '3 blocks (15%) = 12';
+                        document.getElementById('q7TotalLabel').textContent = '?';
+                    }
+                },
+                {
+                    title: 'Step 2 of 3 • Find Each 5% Unit Block (12 ÷ 3 = 4 teachers)',
+                    formula: '5% = 12 ÷ 3 = 4 teachers per block',
+                    narration: 'Dividing 12 teachers across 3 equal blocks shows each 5% block equals 4 teachers—filling all 20 blocks!',
+                    duration: 3800,
+                    apply: () => {
+                        document.getElementById('q7UnitTag').textContent = 'Each 5% block = 4 teachers';
+                        for (let i = 0; i < 20; i++) {
+                            const t = setTimeout(() => {
+                                const b = document.getElementById(`q7-blk-${i}`);
+                                if (b) {
+                                    b.className = `h-8 rounded-md flex items-center justify-center font-mono text-[10px] font-bold transition-all duration-200 pop-in ${
+                                        i < 3 ? 'bg-rose-500 text-white' : 'bg-indigo-600 text-white'
+                                    }`;
+                                    b.textContent = '4';
+                                }
+                            }, i * 85);
+                            state.activeAnim.subTimers.push(t);
+                        }
+                    }
+                },
+                {
+                    title: 'Step 3 of 3 • Total All 20 Blocks (4 × 20 = 80 teachers)',
+                    formula: 'Total Staff = 12 ÷ 15% = 12 ÷ 0.15 = 80 teachers',
+                    narration: '20 blocks of 4 teachers each (or 12 ÷ 0.15) equals 80 teachers in the entire school!',
+                    duration: 3800,
+                    apply: () => {
+                        animateNumberCounter('q7TotalLabel', 12, 80, 900, ' teachers');
+                    }
+                }
+            ],
+
+            q8: [
+                {
+                    title: 'Step 1 of 3 • Compute Class 1A Absentee Count',
+                    formula: 'Class 1A Absent = 36 × 25% = 36 × 0.25 = 9 students',
+                    narration: '25% (one quarter) of Class 1A’s 36 students equals 9 absent students (Sick leave rate = 25.0%).',
+                    duration: 3400,
+                    apply: () => {
+                        const boxA = document.getElementById('q8Box1A');
+                        const boxB = document.getElementById('q8Box1B');
+                        boxA.className = 'bg-indigo-50/70 p-3.5 rounded-xl border-2 border-indigo-500 space-y-2 transition-all duration-300 glow-ring-indigo';
+                        boxB.className = 'bg-white p-3.5 rounded-xl border-2 border-slate-200 space-y-2 transition-all duration-300';
+                        document.getElementById('q8Card1AAbsent').textContent = '36 × 25% = 9';
+                        document.getElementById('q8Bar1A').style.width = '50%'; // visual proportional bar
+                        document.getElementById('q8Bar1B').style.width = '0%';
+                        document.getElementById('q8WinnerBadge').classList.add('hidden');
+                    }
+                },
+                {
+                    title: 'Step 2 of 3 • Compute Class 1B Sick Leave Rate',
+                    formula: 'Class 1B Rate = (11 ÷ 40) × 100% = 27.5%',
+                    narration: 'Class 1B has 11 absent out of 40 students, which converts to a 27.5% sick leave rate.',
+                    duration: 3400,
+                    apply: () => {
+                        const boxA = document.getElementById('q8Box1A');
+                        const boxB = document.getElementById('q8Box1B');
+                        boxA.className = 'bg-white p-3.5 rounded-xl border-2 border-slate-200 space-y-2 transition-all duration-300';
+                        boxB.className = 'bg-teal-50/70 p-3.5 rounded-xl border-2 border-teal-600 space-y-2 transition-all duration-300 glow-ring-teal';
+                        document.getElementById('q8Card1BRate').textContent = '27.5%';
+                        document.getElementById('q8Bar1B').style.width = '55%';
+                    }
+                },
+                {
+                    title: 'Step 3 of 3 • Compare Both Metrics Side-by-Side',
+                    formula: '(a) Headcount: 11 > 9 (1B)   |   (b) Rate: 27.5% > 25% (1B)',
+                    narration: 'Class 1B has both more absent students (11 vs 9) AND a higher sick leave rate (27.5% vs 25.0%)!',
+                    duration: 4000,
+                    apply: () => {
+                        const boxB = document.getElementById('q8Box1B');
+                        boxB.className = 'bg-emerald-50/80 p-3.5 rounded-xl border-2 border-emerald-500 space-y-2 transition-all duration-300 pop-in';
+                        document.getElementById('q8WinnerBadge').classList.remove('hidden');
+                    }
+                }
+            ]
+        };
+
+        // Start or Restart Animated Walkthrough for a Given Question
+        function startAnim(qKey) {
+            stopAnyAnimation();
+            state.activeAnim.qKey = qKey;
+            state.activeAnim.stepIndex = 0;
+            state.activeAnim.playing = true;
+
+            const playerEl = document.getElementById(`anim-player-${qKey}`);
+            if (playerEl) {
+                playerEl.classList.remove('hidden');
+                playerEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            renderAnimStep();
+        }
+
+        function stopAnyAnimation() {
+            if (state.activeAnim.timerId) {
+                clearTimeout(state.activeAnim.timerId);
+                state.activeAnim.timerId = null;
+            }
+            state.activeAnim.subTimers.forEach(t => clearTimeout(t));
+            state.activeAnim.subTimers = [];
+            state.activeAnim.playing = false;
+        }
+
+        function renderAnimStep() {
+            const { qKey, stepIndex, playing } = state.activeAnim;
+            if (!qKey || !animationScripts[qKey]) return;
+
+            // Clear pending sub-timers before executing current step
+            if (state.activeAnim.timerId) clearTimeout(state.activeAnim.timerId);
+            state.activeAnim.subTimers.forEach(t => clearTimeout(t));
+            state.activeAnim.subTimers = [];
+
+            const steps = animationScripts[qKey];
+            const currentStep = steps[stepIndex];
+            const playerEl = document.getElementById(`anim-player-${qKey}`);
+
+            // Execute visual transformation on the diagram
+            currentStep.apply();
+
+            // Render interactive teacher/student playback controller inside the card
+            playerEl.innerHTML = `
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-700/80 pb-2.5">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full ${playing ? 'bg-emerald-400 animate-ping' : 'bg-amber-400'}"></span>
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-300">${currentStep.title}</span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <button onclick="stepAnim(-1)" ${stepIndex === 0 ? 'disabled' : ''} class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-xs font-bold transition cursor-pointer" title="Previous Step">
+                            <i class="fa-solid fa-backward-step"></i> Prev
+                        </button>
+                        <button onclick="togglePlayAnim()" class="px-3 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-xs font-bold transition cursor-pointer">
+                            ${playing ? '<i class="fa-solid fa-pause mr-1"></i> Pause' : '<i class="fa-solid fa-play mr-1"></i> Play'}
+                        </button>
+                        <button onclick="stepAnim(1)" ${stepIndex === steps.length - 1 ? 'disabled' : ''} class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-xs font-bold transition cursor-pointer" title="Next Step">
+                            Next <i class="fa-solid fa-forward-step"></i>
+                        </button>
+                        <button onclick="startAnim('${qKey}')" class="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 transition cursor-pointer" title="Replay from Step 1">
+                            <i class="fa-solid fa-rotate-right"></i>
+                        </button>
+                        <button onclick="closeAnim('${qKey}')" class="px-2 py-1 rounded-lg bg-slate-800 hover:bg-rose-900/70 text-xs text-slate-400 hover:text-rose-200 transition cursor-pointer" title="Close Player">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-slate-950/90 border border-indigo-500/40 rounded-xl px-3.5 py-2.5 font-mono text-xs sm:text-sm font-bold text-amber-300">
+                    ${currentStep.formula}
+                </div>
+                <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                    ${currentStep.narration}
+                </p>
+                <div class="flex items-center gap-1.5 pt-0.5">
+                    ${steps.map((_, idx) => `
+                        <button onclick="jumpToAnimStep(${idx})" class="h-1.5 flex-1 rounded-full transition-all cursor-pointer ${
+                            idx === stepIndex ? 'bg-indigo-400' : idx < stepIndex ? 'bg-emerald-500' : 'bg-slate-700'
+                        }" title="Jump to Step ${idx + 1}"></button>
+                    `).join('')}
+                </div>
+            `;
+
+            // Auto-advance if playing
+            if (playing && stepIndex < steps.length - 1) {
+                state.activeAnim.timerId = setTimeout(() => {
+                    state.activeAnim.stepIndex++;
+                    renderAnimStep();
+                }, currentStep.duration);
+            } else if (playing && stepIndex === steps.length - 1) {
+                state.activeAnim.playing = false;
+                // Re-render header pill to show "Play" (finished) without re-triggering sub-timers
+                const statusDot = playerEl.querySelector('.animate-ping');
+                if (statusDot) statusDot.classList.remove('animate-ping');
+            }
+        }
+
+        function stepAnim(delta) {
+            const { qKey, stepIndex } = state.activeAnim;
+            if (!qKey) return;
+            const steps = animationScripts[qKey];
+            const nextIdx = Math.max(0, Math.min(steps.length - 1, stepIndex + delta));
+            state.activeAnim.playing = false;
+            state.activeAnim.stepIndex = nextIdx;
+            renderAnimStep();
+        }
+
+        function jumpToAnimStep(idx) {
+            state.activeAnim.playing = false;
+            state.activeAnim.stepIndex = idx;
+            renderAnimStep();
+        }
+
+        function togglePlayAnim() {
+            const { qKey, stepIndex } = state.activeAnim;
+            if (!qKey) return;
+            const steps = animationScripts[qKey];
+            if (!state.activeAnim.playing && stepIndex === steps.length - 1) {
+                // Restart if at the end
+                state.activeAnim.stepIndex = 0;
+            }
+            state.activeAnim.playing = !state.activeAnim.playing;
+            renderAnimStep();
+        }
+
+        function closeAnim(qKey) {
+            stopAnyAnimation();
+            const playerEl = document.getElementById(`anim-player-${qKey}`);
+            if (playerEl) playerEl.classList.add('hidden');
+        }
+
+        // Smooth Number Counter Helper for Diagrams
+        function animateNumberCounter(elementId, startVal, endVal, durationMs, suffix = '') {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            const startTime = performance.now();
+            function tick(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / durationMs, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = Math.round(startVal + (endVal - startVal) * eased);
+                el.textContent = `${current}${suffix}`;
+                if (progress < 1) {
+                    requestAnimationFrame(tick);
+                }
+            }
+            requestAnimationFrame(tick);
+        }
+
+        // =====================================================================
+        // DIAGRAM RENDERERS & RESETTERS
+        // =====================================================================
+
+        // Render 40 Desks for Q1 (Organized as 5 columns of 8 desks for clear column grouping)
+        function renderDeskGrid(grouped) {
+            const grid = document.getElementById('deskGrid');
+            grid.innerHTML = '';
+            for (let col = 0; col < 5; col++) {
+                const colDiv = document.createElement('div');
+                colDiv.id = `q1-col-${col}`;
+                colDiv.className = `flex flex-col gap-1.5 p-1 transition-all duration-300 ${
+                    grouped ? 'border border-dashed border-chp-400 rounded-lg bg-chp-50/30' : ''
+                }`;
+                for (let row = 0; row < 8; row++) {
+                    const seatNum = col * 8 + row + 1;
+                    const isSick = col === 0; // First column of 8 = 8 sick students (1/5 of 40)
+                    const desk = document.createElement('div');
+                    desk.id = `desk-${seatNum}`;
+                    desk.className = `desk-icon h-7 rounded-md flex items-center justify-center text-[11px] font-mono font-bold select-none ${
+                        isSick
+                            ? 'bg-rose-500 text-white shadow-xs'
+                            : 'bg-slate-200/85 text-slate-500 border border-slate-300/60'
+                    }`;
+                    desk.title = isSick ? `Student #${seatNum}: On Sick Leave` : `Student #${seatNum}: Present`;
+                    desk.innerHTML = isSick ? '<i class="fa-solid fa-user-injured text-[10px]"></i>' : seatNum;
+                    colDiv.appendChild(desk);
+                }
+                grid.appendChild(colDiv);
+            }
+        }
+
+        function toggleDeskGrouping() {
+            state.q1HighlightGroups = !state.q1HighlightGroups;
+            renderDeskGrid(state.q1HighlightGroups);
+            document.getElementById('groupDeskBtn').textContent = state.q1HighlightGroups
+                ? 'Show ungrouped desks'
+                : 'Group into 5 columns of 8';
+        }
+
+        function resetQ2Visual() {
+            const b0 = document.getElementById('q2-block-0');
+            b0.className = 'bg-rose-500 text-white rounded-xl p-3 text-center shadow-xs transition-all duration-300';
+            [1, 2, 3].forEach(idx => {
+                const blk = document.getElementById(`q2-block-${idx}`);
+                const val = document.getElementById(`q2-block-val-${idx}`);
+                blk.className = 'bg-rose-100 border-2 border-dashed border-rose-300 text-rose-800 rounded-xl p-3 text-center transition-all duration-300';
+                val.textContent = '?';
+            });
+            const bracket = document.getElementById('q2Bracket');
+            bracket.className = 'border-t-2 border-slate-300 pt-1.5 text-center text-xs font-mono text-slate-600 transition-all duration-300';
+            document.getElementById('q2TotalReadout').textContent = '?';
+        }
+
+        function renderQ7Blocks() {
+            const grid = document.getElementById('q7BlocksGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            for (let i = 0; i < 20; i++) {
+                const isKnown = i < 3; // 3 blocks * 5% = 15%
+                const blk = document.createElement('div');
+                blk.id = `q7-blk-${i}`;
+                blk.className = `h-8 rounded-md flex items-center justify-center font-mono text-[10px] font-bold transition-all duration-200 ${
+                    isKnown
+                        ? 'bg-rose-500 text-white shadow-xs'
+                        : 'bg-slate-200 text-slate-500'
+                }`;
+                blk.title = `Block ${i + 1} (5%)`;
+                blk.textContent = isKnown ? '5%' : '?';
+                grid.appendChild(blk);
+            }
+        }
+
+        // =====================================================================
+        // STUDENT ANSWER VALIDATION & PROGRESS TRACKING (Q1 – Q8)
+        // =====================================================================
+
+        function markQuestionSolved(qKey) {
+            if (!state.solved[qKey]) {
+                state.solved[qKey] = true;
+                const badge = document.getElementById(`badge-${qKey}`);
+                const status = document.getElementById(`status-${qKey}`);
+                const card = document.getElementById(`card-${qKey}`);
+
+                badge.className = 'w-8 h-8 rounded-xl bg-emerald-600 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0';
+                badge.innerHTML = '<i class="fa-solid fa-check"></i>';
+                status.className = 'text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800';
+                status.textContent = 'Solved ✓';
+                card.classList.remove('border-slate-200');
+                card.classList.add('border-emerald-300');
+
+                const p1Count = ['q1', 'q2', 'q3', 'q4'].filter(k => state.solved[k]).length;
+                const p2Count = ['q5', 'q6', 'q7', 'q8'].filter(k => state.solved[k]).length;
+                const totalSolved = p1Count + p2Count;
+
+                document.getElementById('progressCount').textContent = totalSolved;
+                document.getElementById('p1CounterBadge').textContent = `${p1Count}/4`;
+                document.getElementById('p2CounterBadge').textContent = `${p2Count}/4`;
+
+                if (p1Count === 4) {
+                    document.getElementById('completionBanner').classList.remove('hidden');
+                }
+                if (totalSolved === 8) {
+                    document.getElementById('grandCompletionBanner').classList.remove('hidden');
+                }
+                if ((p1Count === 4 && ['q1', 'q2', 'q3', 'q4'].includes(qKey)) || totalSolved === 8) {
+                    if (typeof confetti === 'function') {
+                        confetti({ particleCount: 95, spread: 75, origin: { y: 0.65 } });
+                    }
+                }
+            }
+        }
+
+        function resetAllProgress() {
+            stopAnyAnimation();
+            Object.keys(state.solved).forEach(k => {
+                state.solved[k] = false;
+                const isPart2 = ['q5', 'q6', 'q7', 'q8'].includes(k);
+                const badge = document.getElementById(`badge-${k}`);
+                const status = document.getElementById(`status-${k}`);
+                const card = document.getElementById(`card-${k}`);
+                const fb = document.getElementById(`feedback-${k}`);
+                const player = document.getElementById(`anim-player-${k}`);
+
+                if (badge) {
+                    badge.className = `w-8 h-8 rounded-xl ${isPart2 ? 'bg-indigo-900' : 'bg-slate-900'} text-white font-mono font-bold text-sm flex items-center justify-center shrink-0`;
+                    badge.textContent = k.replace('q', '');
+                }
+                if (status) {
+                    status.className = 'text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-500';
+                    status.textContent = 'Unsolved';
+                }
+                if (card) {
+                    card.classList.remove('border-emerald-300');
+                    card.classList.add('border-slate-200');
+                }
+                if (fb) fb.classList.add('hidden');
+                if (player) player.classList.add('hidden');
+            });
+
+            ['input-q1', 'input-q2', 'input-q3', 'input-q4', 'input-q5a', 'input-q5b', 'input-q6a', 'input-q7', 'input-q8-1a', 'input-q8-1b'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '';
+            });
+
+            state.q4Decision = null;
+            state.q6Decision = null;
+            state.q8Choice = { a: null, b: null };
+
+            document.getElementById('progressCount').textContent = '0';
+            document.getElementById('p1CounterBadge').textContent = '0/4';
+            document.getElementById('p2CounterBadge').textContent = '0/4';
+            document.getElementById('completionBanner').classList.add('hidden');
+            document.getElementById('grandCompletionBanner').classList.add('hidden');
+
+            renderDeskGrid(false);
+            resetQ2Visual();
+            renderQ7Blocks();
+            updateGaugePreview();
+            updateQ6Gauge();
+        }
+
+        function showFeedback(id, isCorrect, htmlMsg) {
+            const el = document.getElementById(id);
+            el.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-200', 'text-emerald-950', 'bg-rose-50', 'border-rose-200', 'text-rose-950');
+            if (isCorrect) {
+                el.classList.add('bg-emerald-50', 'border', 'border-emerald-200', 'text-emerald-950');
+            } else {
+                el.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-950');
+            }
+            el.innerHTML = htmlMsg;
+        }
+
+        // Q1 Validation: 20%
+        function checkQ1() {
+            const val = parseFloat(document.getElementById('input-q1').value);
+            if (isNaN(val)) {
+                showFeedback('feedback-q1', false, '<strong>Please enter a number</strong> before checking your answer.');
+                return;
+            }
+            if (Math.abs(val - 20) < 0.01) {
+                markQuestionSolved('q1');
+                showFeedback('feedback-q1', true, `
+                    <div class="font-bold text-emerald-800 mb-1"><i class="fa-solid fa-circle-check mr-1"></i> Correct! 20% of class 1E is on sick leave.</div>
+                    <div class="font-mono text-xs bg-white/80 p-2.5 rounded-lg border border-emerald-200 text-slate-800">
+                        Percentage = (8 &divide; 40) &times; 100% = 0.2 &times; 100% = <strong>20%</strong>
+                    </div>
+                `);
+            } else {
+                showFeedback('feedback-q1', false, `
+                    <strong>Not quite (${val}%).</strong> Remember: divide the <strong>8</strong> students on sick leave by the <strong>40</strong> total students in class 1E, then multiply by 100%.
+                `);
+            }
+        }
+
+        // Q2 Validation: 32 students
+        function checkQ2() {
+            const val = parseFloat(document.getElementById('input-q2').value);
+            if (isNaN(val)) {
+                showFeedback('feedback-q2', false, '<strong>Please enter a number</strong> of students.');
+                return;
+            }
+            if (Math.abs(val - 32) < 0.01) {
+                markQuestionSolved('q2');
+                animationScripts.q2[2].apply();
+                updateQ4Context();
+                showFeedback('feedback-q2', true, `
+                    <div class="font-bold text-emerald-800 mb-1"><i class="fa-solid fa-circle-check mr-1"></i> Spot on! There are 32 students on sick leave in the whole school.</div>
+                    <div class="font-mono text-xs bg-white/80 p-2.5 rounded-lg border border-emerald-200 text-slate-800">
+                        Total on sick leave = 8 &divide; 25% = 8 &divide; 0.25 = <strong>32 students</strong>
+                    </div>
+                `);
+            } else {
+                showFeedback('feedback-q2', false, `
+                    <strong>Try again!</strong> If 25% (one quarter) of the school's sick leave is 8 students, multiply <span class="font-mono">8 &times; 4</span> (or compute <span class="font-mono">8 &divide; 0.25</span>).
+                `);
+            }
+        }
+
+        // Q3 Validation: 800 students
+        function checkQ3() {
+            const val = parseFloat(document.getElementById('input-q3').value);
+            if (isNaN(val)) {
+                showFeedback('feedback-q3', false, '<strong>Please enter a number</strong> of students.');
+                return;
+            }
+            if (Math.abs(val - 800) < 0.01) {
+                markQuestionSolved('q3');
+                document.getElementById('q3TotalLabel').textContent = '800 students';
+                updateQ4Context();
+                showFeedback('feedback-q3', true, `
+                    <div class="font-bold text-emerald-800 mb-1"><i class="fa-solid fa-circle-check mr-1"></i> Excellent! The whole school has 800 students.</div>
+                    <div class="font-mono text-xs bg-white/80 p-2.5 rounded-lg border border-emerald-200 text-slate-800">
+                        Total student population = 120 &divide; 15% = 120 &divide; 0.15 = <strong>800 students</strong>
+                    </div>
+                `);
+            } else {
+                showFeedback('feedback-q3', false, `
+                    <strong>Check your division:</strong> Form 1 has 120 students, which is 15% of the school. Compute <span class="font-mono">120 &divide; 0.15</span>.
+                `);
+            }
+        }
+
+        function updateQ4Context() {
+            if (state.solved.q2 && state.solved.q3) {
+                document.getElementById('q4CarryOverText').innerHTML =
+                    '<span class="text-rose-600">32 sick students</span> &divide; <span class="text-indigo-700">800 total students</span>';
+            }
+        }
+
+        function selectQ4Decision(choice) {
+            state.q4Decision = choice;
+            const btnYes = document.getElementById('btnCloseYes');
+            const btnNo = document.getElementById('btnCloseNo');
+            const radioYes = document.getElementById('radioYes');
+            const radioNo = document.getElementById('radioNo');
+
+            btnYes.className = 'p-3.5 rounded-xl border-2 border-slate-200 bg-white hover:border-rose-300 text-left transition flex items-center gap-3 cursor-pointer';
+            btnNo.className = 'p-3.5 rounded-xl border-2 border-slate-200 bg-white hover:border-emerald-300 text-left transition flex items-center gap-3 cursor-pointer';
+            radioYes.innerHTML = '';
+            radioNo.innerHTML = '';
+
+            if (choice === 'yes') {
+                btnYes.className = 'p-3.5 rounded-xl border-2 border-rose-500 bg-rose-50/60 text-left transition flex items-center gap-3 cursor-pointer';
+                radioYes.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span>';
+            } else {
+                btnNo.className = 'p-3.5 rounded-xl border-2 border-emerald-600 bg-emerald-50/60 text-left transition flex items-center gap-3 cursor-pointer';
+                radioNo.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>';
+            }
+        }
+
+        function updateGaugePreview() {
+            const val = parseFloat(document.getElementById('input-q4').value);
+            const fill = document.getElementById('q4GaugeFill');
+            const readout = document.getElementById('q4GaugeReadout');
+
+            if (isNaN(val) || val < 0) {
+                fill.style.width = '0%';
+                readout.textContent = '-- %';
+                return;
+            }
+
+            const pctWidth = Math.min((val / 15) * 100, 100);
+            fill.style.width = `${pctWidth}%`;
+            readout.textContent = `${val}%`;
+            fill.className = `h-full transition-all duration-300 rounded-l-xl ${val >= 10 ? 'bg-rose-500' : 'bg-emerald-500'}`;
+        }
+
+        // Q4 Validation: 4% and "no"
+        function checkQ4() {
+            const val = parseFloat(document.getElementById('input-q4').value);
+            if (isNaN(val)) {
+                showFeedback('feedback-q4', false, '<strong>Step A incomplete:</strong> Please enter the sick leave rate (%) of the whole school.');
+                return;
+            }
+            if (!state.q4Decision) {
+                showFeedback('feedback-q4', false, '<strong>Step B incomplete:</strong> Please select whether the school should be closed according to CHP guidelines.');
+                return;
+            }
+
+            const rateCorrect = Math.abs(val - 4) < 0.01;
+            const decisionCorrect = state.q4Decision === 'no';
+
+            if (rateCorrect && decisionCorrect) {
+                markQuestionSolved('q4');
+                showFeedback('feedback-q4', true, `
+                    <div class="font-bold text-emerald-800 mb-1.5"><i class="fa-solid fa-circle-check mr-1"></i> Complete Solution Verified!</div>
+                    <div class="font-mono text-xs bg-white/80 p-2.5 rounded-lg border border-emerald-200 text-slate-800 mb-2">
+                        Whole school sick leave rate = (32 &divide; 800) &times; 100% = <strong>4%</strong>
+                    </div>
+                    <p class="text-xs text-emerald-900 leading-relaxed">
+                        <strong>CHP Guideline Conclusion:</strong> No, the school should <strong>not</strong> be closed because the sick leave rate (<strong>4%</strong>) is lower than the CHP indicator threshold of <strong>10%</strong> (and no hospitalisation, ICU, or mortality indicators are triggered).
+                    </p>
+                `);
+            } else if (!rateCorrect) {
+                showFeedback('feedback-q4', false, `
+                    <strong>Check your rate in Step A:</strong> Divide the total sick leave students from Q2 (<span class="font-mono">32</span>) by the whole school population from Q3 (<span class="font-mono">800</span>), then multiply by 100%.
+                `);
+            } else {
+                showFeedback('feedback-q4', false, `
+                    <strong>Your rate (4%) is right,</strong> but check Step B! According to the CHP memo, closure is considered when the sick leave rate is <strong>10% or more</strong>. Is 4% &ge; 10%?
+                `);
+            }
+        }
+
+        // =====================================================================
+        // PART 2: CHALLENGE MODE VALIDATION (Q5 – Q8)
+        // =====================================================================
+
+        // Q5 Validation: (a) 75%, (b) 7%
+        function checkQ5() {
+            const valA = parseFloat(document.getElementById('input-q5a').value);
+            const valB = parseFloat(document.getElementById('input-q5b').value);
+
+            if (isNaN(valA) || isNaN(valB)) {
+                showFeedback('feedback-q5', false, '<strong>Please complete both parts (a) and (b)</strong> before checking.');
+                return;
+            }
+
+            const aOk = Math.abs(valA - 75) < 0.01;
+            const bOk = Math.abs(valB - 7) < 0.01;
+
+            if (aOk && bOk) {
+                markQuestionSolved('q5');
+                animationScripts.q5[3].apply();
+                showFeedback('feedback-q5', true, `
+                    <div class="font-bold text-emerald-800 mb-1.5"><i class="fa-solid fa-circle-check mr-1"></i> Both parts are completely right!</div>
+                    <div class="font-mono text-xs bg-white/80 p-2.5 rounded-lg border border-emerald-200 text-slate-800 space-y-1">
+                        <div>(a) Percentage increase = [(56 &minus; 32) &divide; 32] &times; 100% = (24 &divide; 32) &times; 100% = <strong>75%</strong></div>
+                        <div>(b) New sick leave rate = (56 &divide; 800) &times; 100% = <strong>7%</strong></div>
+                    </div>
+                `);
+            } else if (!aOk && bOk) {
+                showFeedback('feedback-q5', false, `
+                    <strong>Part (b) is correct (7%),</strong> but check Part (a)! Divide the increase (<span class="font-mono">56 &minus; 32 = 24</span>) by the <strong>original</strong> number (<span class="font-mono">32</span>), not 56.
+                `);
+            } else if (aOk && !bOk) {
+                showFeedback('feedback-q5', false, `
+                    <strong>Part (a) is correct (75%),</strong> but check Part (b)! Divide the new sick leave count (<span class="font-mono">56</span>) by the whole school population (<span class="font-mono">800</span>) and multiply by 100%.
+                `);
+            } else {
+                showFeedback('feedback-q5', false, `
+                    <strong>Both parts need another look.</strong> Click <em>Animate Solution</em> or <em>Hint</em> to see the step-by-step breakdown.
+                `);
+            }
+        }
+
+        function updateQ6Gauge() {
+            const val = parseFloat(document.getElementById('input-q6a').value);
+            const fill = document.getElementById('q6GaugeFill');
+            const readout = document.getElementById('q6GaugeReadout');
+
+            if (isNaN(val) || val < 0) {
+                fill.style.width = '0%';
+                readout.textContent = '-- %';
+                return;
+            }
+
+            const pctWidth = Math.min((val / 2.0) * 100, 100);
+            fill.style.width = `${pctWidth}%`;
+            readout.textContent = `${val}%`;
+            fill.className = `h-full transition-all duration-300 rounded-l-xl ${val > 1 ? 'bg-rose-500' : 'bg-emerald-500'}`;
+        }
+
+        function selectQ6Decision(choice) {
+            state.q6Decision = choice;
+            const btnYes = document.getElementById('btnHospYes');
+            const btnNo = document.getElementById('btnHospNo');
+            const rYes = document.getElementById('radioHospYes');
+            const rNo = document.getElementById('radioHospNo');
+
+            btnYes.className = 'p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-rose-300 text-left transition flex items-center gap-3 cursor-pointer';
+            btnNo.className = 'p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-emerald-300 text-left transition flex items-center gap-3 cursor-pointer';
+            rYes.innerHTML = '';
+            rNo.innerHTML = '';
+
+            if (choice === 'yes') {
+                btnYes.className = 'p-3 rounded-xl border-2 border-rose-500 bg-rose-50/60 text-left transition flex items-center gap-3 cursor-pointer';
+                rYes.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span>';
+            } else {
+                btnNo.className = 'p-3 rounded-xl border-2 border-emerald-600 bg-emerald-50/60 text-left transition flex items-center gap-3 cursor-pointer';
+                rNo.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>';
+            }
+        }
+
+        // Q6 Validation: (a) 1.25%, (b) "yes"
+        function checkQ6() {
+            const valA = parseFloat(document.getElementById('input-q6a').value);
+            if (isNaN(valA)) {
+                showFeedback('feedback-q6', false, '<strong>Part (a) incomplete:</strong> Please enter the hospitalisation rate (%).');
+                return;
+            }
+            if (!state.q6Decision) {
+                showFeedback('feedback-q6', false, '<strong>Part (b) incomplete:</strong> Select whether this indicator meets the CHP closure threshold.');
+                return;
+            }
+
+            const rateOk = Math.abs(valA - 1.25) < 0.01;
+            const decOk = state.q6Decision === 'yes';
+
+            if (rateOk && decOk) {
+                markQuestionSolved('q6');
+                showFeedback('feedback-q6', true, `
+                    <div class="font-bold text-emerald-800 mb-1.5"><i class="fa-solid fa-circle-check mr-1"></i> Spot on! You correctly evaluated the CHP hospitalisation indicator.</div>
+                    <div class="font-mono text-xs bg-white/80 p-2.5 rounded-lg border border-emerald-200 text-slate-800 mb-1.5">
+                        (a) Hospitalisation rate = (10 &divide; 800) &times; 100% = <strong>1.25%</strong>
+                    </div>
+                    <p class="text-xs text-emerald-900">
+                        <strong>(b) Explanation:</strong> Yes! The CHP guideline states that school closure may be considered when the hospitalisation rate is <strong>more than 1%</strong>, and <span class="font-mono font-bold">1.25% &gt; 1%</span>.
+                    </p>
+                `);
+            } else if (!rateOk) {
+                showFeedback('feedback-q6', false, `
+                    <strong>Check Part (a):</strong> Divide the <span class="font-mono">10</span> hospitalised students by <span class="font-mono">800</span> total students, then multiply by 100%.
+                `);
+            } else {
+                showFeedback('feedback-q6', false, `
+                    <strong>Your rate (1.25%) is right,</strong> but compare <span class="font-mono">1.25%</span> with the CHP threshold of <strong>more than 1%</strong> (&gt; 1%). Does 1.25% exceed 1%?
+                `);
+            }
+        }
+
+        // Q7 Validation: 80 teachers
+        function checkQ7() {
+            const val = parseFloat(document.getElementById('input-q7').value);
+            if (isNaN(val)) {
+                showFeedback('feedback-q7', false, '<strong>Please enter a number</strong> of teachers.');
+                return;
+            }
+            if (Math.abs(val - 80) < 0.01) {
+                markQuestionSolved('q7');
+                document.getElementById('q7TotalLabel').textContent = '80 teachers';
+                showFeedback('feedback-q7', true, `
+                    <div class="font-bold text-emerald-800 mb-1"><i class="fa-solid fa-circle-check mr-1"></i> Correct! There are 80 teachers in total.</div>
+                    <div class="font-mono text-xs bg-white/80 p-2.5 rounded-lg border border-emerald-200 text-slate-800">
+                        Total teachers = 12 &divide; 15% = 12 &divide; 0.15 = <strong>80 teachers</strong>
+                    </div>
+                `);
+            } else {
+                showFeedback('feedback-q7', false, `
+                    <strong>Try again!</strong> If 15% of the teaching staff is 12 teachers, compute <span class="font-mono">12 &divide; 0.15</span> to find the 100% total.
+                `);
+            }
+        }
+
+        // Q8 Choice Selector & Validation: (a) '1B', (b) '1B'
+        function selectQ8(part, cls) {
+            state.q8Choice[part] = cls;
+            ['1A', '1B'].forEach(c => {
+                const btn = document.getElementById(`btnQ8${part}-${c}`);
+                if (c === cls) {
+                    btn.className = 'p-2.5 rounded-xl border-2 border-indigo-600 bg-indigo-50 text-sm font-extrabold text-indigo-900 transition cursor-pointer';
+                } else {
+                    btn.className = 'p-2.5 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-300 text-sm font-bold text-slate-800 transition cursor-pointer';
+                }
+            });
+        }
+
+        function checkQ8() {
+            if (!state.q8Choice.a || !state.q8Choice.b) {
+                showFeedback('feedback-q8', false, '<strong>Please select a class for both (a) and (b)</strong> before checking.');
+                return;
+            }
+
+            const aOk = state.q8Choice.a === '1B';
+            const bOk = state.q8Choice.b === '1B';
+
+            if (aOk && bOk) {
+                markQuestionSolved('q8');
+                animationScripts.q8[0].apply();
+                animationScripts.q8[1].apply();
+                animationScripts.q8[2].apply();
+                showFeedback('feedback-q8', true, `
+                    <div class="font-bold text-emerald-800 mb-1.5"><i class="fa-solid fa-circle-check mr-1"></i> Brilliant comparison! Class 1B is higher in both headcount and rate.</div>
+                    <div class="font-mono text-xs bg-white/80 p-2.5 rounded-lg border border-emerald-200 text-slate-800 space-y-1">
+                        <div>&bull; Class 1A: 36 &times; 25% = <strong>9 absent</strong> (Rate = <strong>25%</strong>)</div>
+                        <div>&bull; Class 1B: <strong>11 absent</strong> (Rate = 11 &divide; 40 &times; 100% = <strong>27.5%</strong>)</div>
+                        <div>&bull; (a) 11 &gt; 9 &rArr; <strong>Class 1B</strong> &nbsp;|&nbsp; (b) 27.5% &gt; 25% &rArr; <strong>Class 1B</strong></div>
+                    </div>
+                `);
+            } else {
+                showFeedback('feedback-q8', false, `
+                    <strong>Not quite!</strong> Calculate Class 1A's absent count (<span class="font-mono">36 &times; 25% = 9</span>) and Class 1B's percentage (<span class="font-mono">11 &divide; 40 &times; 100% = 27.5%</span>), then compare both!
+                `);
+            }
+        }
+
+        // =====================================================================
+        // OUTBREAK SIMULATOR & RANDOMIZED PRACTICE GENERATOR
+        // =====================================================================
+
+        function updateSimulator() {
+            const pop = parseInt(document.getElementById('simPop').value, 10);
+            const sick = Math.min(parseInt(document.getElementById('simSick').value, 10), pop);
+            const hosp = Math.min(parseInt(document.getElementById('simHosp').value, 10), sick);
+            const icu = parseInt(document.getElementById('simIcu').value, 10);
+
+            document.getElementById('simPopVal').textContent = `${pop} students`;
+            document.getElementById('simSickVal').textContent = `${sick} students`;
+            document.getElementById('simHospVal').textContent = `${hosp} students`;
+            document.getElementById('simIcuVal').textContent = `${icu} admission${icu === 1 ? '' : 's'}`;
+
+            const sickRate = (sick / pop) * 100;
+            const hospRate = (hosp / pop) * 100;
+
+            document.getElementById('simSickRate').textContent = `${sickRate.toFixed(1)}%`;
+            document.getElementById('simHospRate').textContent = `${hospRate.toFixed(2)}%`;
+
+            const triggers = [];
+            if (sickRate >= 10) triggers.push(`Sick leave rate is ${sickRate.toFixed(1)}% (&ge; 10% indicator)`);
+            if (hospRate > 1) triggers.push(`Hospitalisation rate is ${hospRate.toFixed(2)}% (&gt; 1% indicator)`);
+            if (icu >= 2) triggers.push(`${icu} ICU admissions (&ge; 2 ICU indicator)`);
+
+            const card = document.getElementById('simResultCard');
+            const badge = document.getElementById('simStatusBadge');
+            const sickNote = document.getElementById('simSickNote');
+            const hospNote = document.getElementById('simHospNote');
+            const exp = document.getElementById('simExplanation');
+
+            sickNote.textContent = sickRate >= 10 ? '⚠ Exceeds 10% threshold' : 'Below 10% limit';
+            sickNote.className = `text-[11px] font-semibold mt-1 ${sickRate >= 10 ? 'text-rose-600' : 'text-emerald-700'}`;
+
+            hospNote.textContent = hospRate > 1 ? '⚠ Exceeds 1% threshold' : 'Within ≤ 1% limit';
+            hospNote.className = `text-[11px] font-semibold mt-1 ${hospRate > 1 ? 'text-rose-600' : 'text-emerald-700'}`;
+
+            if (triggers.length > 0) {
+                card.className = 'rounded-2xl border-2 border-rose-300 bg-rose-50/80 p-6 space-y-4 transition-all';
+                badge.className = 'px-3 py-1 rounded-full text-xs font-extrabold bg-rose-600 text-white';
+                badge.textContent = 'CONSIDER CLOSURE';
+                exp.innerHTML = `<strong>Closure Indicator Triggered:</strong> ${triggers.join('; ')}. CHP may advise class suspension.`;
+            } else {
+                card.className = 'rounded-2xl border-2 border-emerald-300 bg-emerald-50/70 p-6 space-y-4 transition-all';
+                badge.className = 'px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-600 text-white';
+                badge.textContent = 'KEEP SCHOOL OPEN';
+                exp.textContent = 'All indicators are below the CHP Expert Group thresholds. Standard hygiene and monitoring continue.';
+            }
+        }
+
+        function generateRandomProblem() {
+            const types = ['sickRate', 'reversePop', 'pctIncrease', 'hospRate'];
+            const type = types[Math.floor(Math.random() * types.length)];
+            const unitLabel = document.getElementById('randomUnitLabel');
+
+            if (type === 'sickRate') {
+                const populations = [500, 600, 750, 800, 900, 1000];
+                const rates = [4, 5, 6, 8, 10, 12, 15];
+                const pop = populations[Math.floor(Math.random() * populations.length)];
+                const rate = rates[Math.floor(Math.random() * rates.length)];
+                const sick = (pop * rate) / 100;
+
+                state.randomProblem = {
+                    ans: rate,
+                    explanation: `(${sick} ÷ ${pop}) × 100% = ${rate}%. ${rate >= 10 ? 'Since ≥ 10%, CHP would consider class suspension!' : 'Since < 10%, the school stays open.'}`
+                };
+                unitLabel.textContent = '%';
+                document.getElementById('randomQuestionText').innerHTML = `
+                    <span class="text-chp-400 font-bold">[Sick Leave Rate]</span> A school has <strong>${pop}</strong> students. Today, <strong>${sick}</strong> students are on sick leave. Find the school's sick leave rate (%).
+                `;
+            } else if (type === 'reversePop') {
+                const pcts = [10, 15, 20, 25];
+                const totals = [400, 600, 800, 1000];
+                const pct = pcts[Math.floor(Math.random() * pcts.length)];
+                const total = totals[Math.floor(Math.random() * totals.length)];
+                const part = (total * pct) / 100;
+
+                state.randomProblem = {
+                    ans: total,
+                    explanation: `${part} ÷ ${pct}% = ${part} ÷ ${pct / 100} = ${total} students.`
+                };
+                unitLabel.textContent = 'students';
+                document.getElementById('randomQuestionText').innerHTML = `
+                    <span class="text-indigo-300 font-bold">[Reverse %]</span> There are <strong>${part}</strong> students in Form 1, which accounts for <strong>${pct}%</strong> of the whole school. Find the total number of students in the school.
+                `;
+            } else if (type === 'pctIncrease') {
+                const origs = [20, 25, 32, 40, 50];
+                const incPcts = [20, 25, 50, 75, 100];
+                const orig = origs[Math.floor(Math.random() * origs.length)];
+                const incPct = incPcts[Math.floor(Math.random() * incPcts.length)];
+                const nextVal = orig + (orig * incPct) / 100;
+
+                state.randomProblem = {
+                    ans: incPct,
+                    explanation: `[(${nextVal} − ${orig}) ÷ ${orig}] × 100% = (${nextVal - orig} ÷ ${orig}) × 100% = ${incPct}%.`
+                };
+                unitLabel.textContent = '%';
+                document.getElementById('randomQuestionText').innerHTML = `
+                    <span class="text-amber-300 font-bold">[% Increase]</span> Sick leave cases in a school rose from <strong>${orig}</strong> yesterday to <strong>${nextVal}</strong> today. Find the percentage increase (%).
+                `;
+            } else {
+                const pops = [600, 800, 1000];
+                const hosps = [6, 9, 10, 12, 15];
+                const pop = pops[Math.floor(Math.random() * pops.length)];
+                const hosp = hosps[Math.floor(Math.random() * hosps.length)];
+                const rate = Number(((hosp / pop) * 100).toFixed(2));
+
+                state.randomProblem = {
+                    ans: rate,
+                    explanation: `(${hosp} ÷ ${pop}) × 100% = ${rate}%. ${rate > 1 ? 'Since > 1%, this meets the CHP hospitalisation indicator!' : 'Since ≤ 1%, this is within the 1% threshold.'}`
+                };
+                unitLabel.textContent = '%';
+                document.getElementById('randomQuestionText').innerHTML = `
+                    <span class="text-rose-300 font-bold">[Hospitalisation Rate]</span> Out of <strong>${pop}</strong> students in a school, <strong>${hosp}</strong> are hospitalised with influenza. Calculate the hospitalisation rate (%).
+                `;
+            }
+
+            document.getElementById('randomAnswerControls').classList.remove('hidden');
+            document.getElementById('randomUserAns').value = '';
+            document.getElementById('randomFeedback').textContent = '';
+        }
+
+        function checkRandomProblem() {
+            if (!state.randomProblem) return;
+            const userAns = parseFloat(document.getElementById('randomUserAns').value);
+            const fb = document.getElementById('randomFeedback');
+            if (isNaN(userAns)) {
+                fb.className = 'text-xs font-medium text-amber-300';
+                fb.textContent = 'Enter a number first.';
+                return;
+            }
+            if (Math.abs(userAns - state.randomProblem.ans) < 0.02) {
+                fb.className = 'text-xs font-medium text-emerald-400';
+                fb.textContent = `✓ Correct! ${state.randomProblem.explanation}`;
+            } else {
+                fb.className = 'text-xs font-medium text-rose-400';
+                fb.textContent = `✗ Not quite—double-check your division and try again!`;
+            }
+        }
+    </script>
+</body>
+</html>
